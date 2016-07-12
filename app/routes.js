@@ -22,14 +22,23 @@ router.post('/probate/maritalstatus', function(req,res) {
 	res.render('probate/will', { 'form': req.body });
 });
 
-router.post('/probate/will', function(req,res) {
+router.post('/probate/will', function (req,res){
+ if(req.body.radio_will_group == 'No'){
+ res.render('probate/stop',{'reason' : 'No will is available. So the application would be stopped at this point.'});
+}
+else {
 	res.render('probate/executors', { 'form': req.body });
+}
+
 });
 
 router.post('/probate/executors', function(req,res) {
 	res.render('probate/summary', { 'form': req.body });
 });
 
+router.post('/probate/stop',function(req,res){
+  res.redirect('/probate/welcome');
+});
 // Example routes - feel free to delete these
 
 // Passing data into a page
