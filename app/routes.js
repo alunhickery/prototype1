@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var messages = require('./messages.js');
+var form = {};
 
 var router = express.Router();
 
@@ -10,36 +12,44 @@ router.get('/', function (req, res) {
   res.render('index');
 });
 
+router.get('/probate/nameanddate', function(req,res) {
+  res.render('probate/nameanddate', {'form': form});
+});
+
 router.post('/probate/nameanddate', function(req,res) {
-	res.render('probate/address', { 'form': req.body });
+  form.nameanddate = req.body;
+	res.render('probate/address', {'form': form});
 });
 
 router.post('/probate/address', function(req,res) {
+  form.address = req.body;
     console.log(req.body);
   if(req.body.radio_address_england_group == 'No'){
- res.render('probate/stop',{'reason' : 'Deceased was not domiciled in England or Wales. The application would be stopped at this point.'});
-}
-else {
-	res.render('probate/maritalstatus', { 'form': req.body });
-}
+    res.render('probate/stop',{'reason' : messages.stop_foreign_domicile});
+  } else {
+  	res.render('probate/maritalstatus', {'form': form});
+  }
 });
 
 router.post('/probate/maritalstatus', function(req,res) {
-	res.render('probate/will', { 'form': req.body });
+  form.maritalstatus = req.body;
+	res.render('probate/will', {'form': form});
 });
 
 router.post('/probate/will', function (req,res){
+  form.will = req.body;
  if(req.body.radio_will_group == 'No'){
- res.render('probate/stop',{'reason' : 'No will is available. The application would be stopped at this point.'});
+ res.render('probate/stop',{'reason' : messages.stop_no_will});
 }
 else {
-	res.render('probate/executors', { 'form': req.body });
+	res.render('probate/executors', {'form': form});
 }
 
 });
 
 router.post('/probate/executors', function(req,res) {
-	res.render('probate/summary', { 'form': req.body });
+  form.executors = req.body;
+	res.render('probate/summary', {'form': form});
 });
 
 router.post('/probate/stop',function(req,res){

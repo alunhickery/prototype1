@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  {{ language.executors_title }}
+  {{ messages.executors_title }}
 {% endblock %}
 
 {% block content %}
@@ -10,18 +10,15 @@
   {% include "probate/includes/breadcrumb_probate.html" %}
 
   <form action="/probate/executors" method="post" class="form">
-    <h1 class="form-title heading-large">
-      Who is the deceased?
-    </h1>
 	<div class="form-group">
 	   <legend class="form-label-bold">Are you an executor/applicant?</legend>
       <fieldset class="inline">
 			<legend class="visuallyhidden">Are you an executor/applicant</legend>
 			<label class="block-label" for="radio-applicant-yes" data-target="applicant-details">
-				<input id="radio-applicant-yes" type="radio" name="radio-applicant-group" value="Yes">Yes
+				<input id="radio-applicant-yes" type="radio" name="radio_executor_group" value="Yes">Yes
 			</label>
 			<label class="block-label" for="radio-applicant-no">
-				<input id="radio-applicant-no" type="radio" name="radio-applicant-group" value="No">No
+				<input id="radio-applicant-no" type="radio" name="radio_executor_group" value="No">No
 			</label>
 			<div class="panel panel-border-narrow js-hidden" id="applicant-details">
 				<div class="form-group">

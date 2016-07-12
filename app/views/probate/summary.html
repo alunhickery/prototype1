@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  {{ language.summary_title }}
+  {{ messages.summary_title }}
 {% endblock %}
 
 {% block content %}
@@ -13,58 +13,62 @@
   </h1>
 
   <table class="check-your-answers">
-
-    <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Organisations involved
-          </h2>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
-
     <tbody>
       <tr>
-        <td>
-          Forename
-        </td>
-        <td>
-          {{form.forename}}
-        </td>
-        <td class="change-answer">
-          <a href="/probate/form">
-            Change <span class="visuallyhidden">Forename</span>
-          </a>
-        </td>
+        <th colspan="3"><h2 class="heading-medium">The person who has died</h2></th>
       </tr>
-	  <tr>
-        <td>
-          Surname
-        </td>
-        <td>
-          {{form.surname}}
-        </td>
-        <td class="change-answer">
-          <a href="/probate/form">
-            Change <span class="visuallyhidden">Surname</span>
-          </a>
-        </td>
+      <tr>
+        <td>Full Name</td>
+        <td>{{form.nameanddate.deceased_full_name}}</td>
+        <td class="change-answer"><a href="/probate/nameanddate">Change <span class="visuallyhidden">Full Name</span></a></td>
       </tr>
-	  <tr>
-        <td>
-          Address
-        </td>
-        <td>
-          {{form.address}}
-        </td>
-        <td class="change-answer">
-          <a href="/probate/form">
-            Change <span class="visuallyhidden">Address</span>
-          </a>
-        </td>
+      <tr>
+        <td>Is this the same as it appears on the will?</td>
+        <td>{{form.nameanddate.radio_will_name_group}}</td>
+        <td class="change-answer"><a href="/probate/nameanddate">Change <span class="visuallyhidden">Is this the same as it appears on the will?</span></a></td>
+      </tr>
+      <tr>
+        <td>Are any other names needed on the Grant?</td>
+        <td>{{form.nameanddate.radio_other_names_group}}</td>
+        <td class="change-answer"><a href="/probate/nameanddate">Change <span class="visuallyhidden">Are any other names needed on the Grant?</span></a></td>
+      </tr>
+      <tr>
+        <td>What was the marital status of the deceased when they died?</td>
+        <td>{{form.maritalstatus.radio_marital_group}}</td>
+        <td class="change-answer"><a href="/probate/maritalstatus">Change <span class="visuallyhidden">What was the marital status of the deceased when they died?</span></a></td>
+      </tr>
+
+      <tr>
+        <th colspan="3"><h2 class="heading-medium">The Will</h2></th>
+      </tr>
+      <tr>
+        <td>Is there a will?</td>
+        <td>{{form.will.radio_will_group}}</td>
+        <td class="change-answer"><a href="/probate/will">Change <span class="visuallyhidden">Is there a will</span></a></td>
+      </tr>
+      <tr>
+        <td>Is it the original?</td>
+        <td>{{form.will.radio_will_original_group}}</td>
+        <td class="change-answer"><a href="/probate/will">Change <span class="visuallyhidden">Is it the original?</span></a></td>
+      </tr>
+      <tr>
+        <td>Are there any wills made outside of England and Wales?</td>
+        <td>{{form.will.radio_will_address_group}}</td>
+        <td class="change-answer"><a href="/probate/will">Change <span class="visuallyhidden">Are there any wills made outside of England and Wales?</span></a></td>
+      </tr>
+      <tr>
+        <td>Are there any codicils?</td>
+        <td>{{form.will.radio_codicil_group}}</td>
+        <td class="change-answer"><a href="/probate/will">Change <span class="visuallyhidden">Are there any codicils?</span></a></td>
+      </tr>
+
+      <tr>
+        <th colspan="3"><h2 class="heading-medium">The Executors</h2></th>
+      </tr>
+      <tr>
+        <td>Are you an executor/applicant?</td>
+        <td>{{form.executors.radio_executor_group}}</td>
+        <td class="change-answer"><a href="/probate/executors">Change <span class="visuallyhidden">Are you an executor/applicant?</span></a></td>
       </tr>
     </tbody>
   </table>

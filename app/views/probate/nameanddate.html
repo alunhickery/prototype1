@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  {{ language.nameanddate_title }}
+  {{ messages.nameanddate_title }}
 {% endblock %}
 
 {% block content %}
@@ -14,17 +14,17 @@
 			<!-- full name -->
 			<label class="form-label-bold" for="input-deceased-full-name">Their name</label>
 			<p class="form-hint">This is must appear exactly as it written on the death certificate</p>
-			<input type="text" class="form-control" id="input-deceased-full-name" name="deceased-full-name">
+			<input type="text" class="form-control" id="input-deceased-full-name" name="deceased_full_name" value="{{form.nameanddate.deceased_full_name}}">
 		</div>
 		<div class="form-group">
 			<legend class="form-label-bold">Is this the same as it appears on the will?</legend>
 			<fieldset class="inline">
 				<legend class="visuallyhidden">Is this the same as it appears on the will</legend>
 				<label class="block-label" for="radio-will-name-yes">
-					<input id="radio-will-name-yes" type="radio" name="radio-will-name-group" value="Yes">Yes
+					<input id="radio-will-name-yes" type="radio" name="radio_will_name_group" value="Yes">Yes
 				</label>
 				<label class="block-label" for="radio-will-name-no">
-					<input id="radio-will-name-no" type="radio" name="radio-will-name-group" value="No">No
+					<input id="radio-will-name-no" type="radio" name="radio_will_name_group" value="No">No
 				</label>
 			</fieldset>
 		</div>
@@ -33,10 +33,10 @@
 			<fieldset class="inline">
 				<legend class="visuallyhidden">Is this the same as it appears on the will</legend>
 				<label class="block-label" for="radio-other-names-yes">
-					<input id="radio-other-names-yes" type="radio" name="radio-other-names-group" value="Yes">Yes
+					<input id="radio-other-names-yes" type="radio" name="radio_other_names_group" value="Yes">Yes
 				</label>
 				<label class="block-label" for="radio-other-names-no">
-					<input id="radio-other-names-no" type="radio" name="radio-other-names-group" value="No">No
+					<input id="radio-other-names-no" type="radio" name="radio_other_names_group" value="No">No
 				</label>
 			</fieldset>
 		</div>

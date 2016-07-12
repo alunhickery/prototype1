@@ -10,6 +10,8 @@ module.exports = {
   will_title: 'Will and Codicil',
   executors_title: 'The Executors',
   summary_title: 'Summary',
-  nextsteps_title: 'Next Steps'
+  nextsteps_title: 'Next Steps',
+  stop_foreign_domicile: 'Deceased was not domiciled in England or Wales. The application would be stopped at this point.',
+  stop_no_will: 'No will is available. The application would be stopped at this point.'
 };
 	
