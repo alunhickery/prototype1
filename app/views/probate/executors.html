@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Probate form
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+  {% include "probate/includes/breadcrumb_probate.html" %}
+
+  <form action="/probate/applicant" method="post" class="form">
+    <h1 class="form-title heading-large">
+      Who is the deceased?
+    </h1>
+	<div class="form-group">
+	   <label class="form-label-bold" for="full-name">Are you an executor/applicant?</label>
+      <fieldset class="inline">
+			<legend class="visuallyhidden">Are you an executor/applicant</legend>
+			<label class="block-label" for="radio-applicant-yes" data-target="applicant-details">
+				<input id="radio-applicant-yes" type="radio" name="radio-applicant-group" value="Yes">Yes
+			</label>
+			<label class="block-label" for="radio-applicant-no">
+				<input id="radio-applicant-no" type="radio" name="radio-applicant-group" value="No">No
+			</label>
+			<div class="panel panel-border-narrow js-hidden" id="applicant-details">
+				<div class="form-group">
+					<!-- full name -->
+					<label class="form-label-bold" for="full-name">Please give your full name as it appears on the will</label>
+					<input type="text" class="form-control" id="forename" name="forename">
+				</div>
+				<div class="form-group">
+					<label class="form-label-bold" for="full-name">Are you known by another name?</label>
+					<fieldset class="inline">
+						<legend class="visuallyhidden">Are you known by another name</legend>
+						<label class="block-label" for="radio-applicant-alias-yes">
+							<input id="radio-applicant-alias-yes" type="radio" name="radio-applicant-alias-group" value="Yes">Yes
+						</label>
+						<label class="block-label" for="radio-applicant-alias-no">
+							<input id="radio-applicant-alias-no" type="radio" name="radio-applicant-alias-group" value="No">No
+						</label>
+					</fieldset>
+				</div>
+			</div>
+		</fieldset>
+    </div>
+    <div class="form-group">
+	   <label class="form-label-bold" for="full-name">Please list any executors who not making this application with you an explain why</label>
+         <fieldset>
+           <label for="radio-executor-1" class="block-label">
+             <input id="radio-executor-1" type="radio" name="radio-executors-group" value="bachelor">
+             <span class="heading-small">Executor 1</span><br>
+           </label>
+           <label for="radio-executor-2" class="block-label">
+             <input id="radio-executor-2" type="radio" name="radio-executors-group" value="widow">
+             <span class="heading-small">Executor 2</span><br>
+           </label>
+		<label for="radio-executor-3" class="block-label" data-target="executors-details">
+             <input id="radio-executor-3" type="radio" name="radio-executors-group" value="separated">
+             <span class="heading-small">Executor 3</span><br>
+           </label>
+	       <div class="panel panel-border-narrow js-hidden" id="executors-details">
+			  <div class="form-group">
+  			     <fieldset>
+					<label for="radio-executor-died-before" class="block-label">
+						<input id="radio-executor-died-before" type="radio" name="radio-executor-3-group" value="bachelor">
+						<span class="heading-small">They died before the deceased person</span><br>
+					</label>
+					<label for="radio-executor-died-after" class="block-label">
+						<input id="radio-executor-died-after" type="radio" name="radio-executor-3-group" value="widow">
+						<span class="heading-small">They died after the deceased person</span><br>
+					</label>
+					<label for="radio-executor-reserved" class="block-label">
+						<input id="radio-executor-reserved" type="radio" name="radio-executor-3-group" value="separated">
+						<span class="heading-small">Power reserved</span><br>
+					</label>
+					<label for="radio-executor-renunciation" class="block-label">
+						<input id="radio-executor-renunciation" type="radio" name="radio-executor-3-group" value="bachelor">
+						<span class="heading-small">Renunciation</span><br>
+					</label>
+					<label for="radio-executor-attorney" class="block-label">
+						<input id="radio-executor-attorney" type="radio" name="radio-executor-3-group" value="bachelor">
+						<span class="heading-small">Power of Attorney</span><br>
+					</label>
+				  </fieldset>
+			  </div>
+           </div>
+         </fieldset>
+    </div>
+	<div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+  </form>
+
+</main>
+{% endblock %}

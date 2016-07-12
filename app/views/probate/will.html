@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Probate form
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+  {% include "probate/includes/breadcrumb_probate.html" %}
+
+  <form action="/probate/will" method="post" class="form">
+    <h1 class="form-title heading-large">
+      The Will
+    </h1>
+	<div class="form-group">
+	   <label class="form-label-bold" for="full-name">Is there a will?</label>
+      <fieldset class="inline">
+			<legend class="visuallyhidden">Is there a will</legend>
+			<label class="block-label" for="radio-will-yes">
+				<input id="radio-will-yes" type="radio" name="radio-will-group" value="Yes">Yes
+			</label>
+			<label class="block-label" for="radio-will-no">
+				<input id="radio-will-no" type="radio" name="radio-will-group" value="No">No
+			</label>
+		</fieldset>
+    </div>
+	<div class="form-group">
+	   <label class="form-label-bold" for="full-name">Is it the original?</label>
+	   <p class="form-hint">You must send the original will plus three copies. 
+							We cannot process your application without the original Will.</p>
+      <fieldset class="inline">
+			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
+			<label class="block-label" for="radio-will-original-yes">
+				<input id="radio-will-original-yes" type="radio" name="radio-will-original-group" value="Yes">Yes
+			</label>
+			<label class="block-label" for="radio-will-original-no">
+				<input id="radio-will-original-no" type="radio" name="radio-will-original-group" value="No">No
+			</label>
+		</fieldset>
+    </div>
+	<div class="form-group">
+	   <label class="form-label-bold" for="full-name">Are there any wills made outside of England and Wales?</label>
+      <fieldset class="inline">
+			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
+			<label class="block-label" for="will-address-yes">
+				<input id="radio-will-address-yes" type="radio" name="radio-will-address-group" value="Yes">Yes
+			</label>
+			<label class="block-label" for="will-address-no">
+				<input id="radio-will-address-no" type="radio" name="radio-will-address-group" value="No">No
+			</label>
+		</fieldset>
+    </div>
+	<div class="form-group">
+	   <label class="form-label-bold" for="full-name">Are there any codicils?</label>
+      <fieldset class="inline">
+			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
+			<label class="block-label" for="radio-codicil-yes" data-target="codicil-details">
+				<input id="radio-codicil-yes" type="radio" name="radio-codicil-group" value="Yes">Yes
+			</label>
+			<label class="block-label" for="radio-codicil-no">
+				<input id="radio-codicil-no" type="radio" name="radio-codicil-group" value="No">No
+			</label>
+			<div class="panel panel-border-narrow js-hidden" id="codicil-details">
+				<!-- Date of birth -->
+				<div class="form-group">
+					<fieldset>
+						<legend class="form-label-bold">What is the date of the codicil?</legend>
+						<p class="form-hint">For example, 20 3 1966</p>
+						<div class="form-date">
+							<div class="form-group form-group-day">
+								<label for="dob-day">Day</label>
+								<input class="form-control" id="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+							</div>
+							<div class="form-group form-group-month">
+								<label for="dob-month">Month</label>
+								<input class="form-control" id="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+							</div>
+							<div class="form-group form-group-year">
+								<label for="dob-year">Year</label>
+								<input class="form-control" id="dob-year" type="number" pattern="[0-9]*" min="0" max="2014">
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</fieldset>
+    </div>
+	<div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+
+  </form>
+
+</main>
+{% endblock %}

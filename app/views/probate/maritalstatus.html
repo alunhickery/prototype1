@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Probate form
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+  {% include "probate/includes/breadcrumb_probate.html" %}
+
+  <form action="/probate/marriage" method="post" class="form">
+    <h1 class="form-title heading-large">Who is the deceased?</h1>
+	<div class="form-group">
+	   <label class="form-label-bold" for="full-name">What was the marital status of the deceased when they died?</label>
+         <fieldset>
+           <label for="radio-bachelor" class="block-label">
+             <input id="radio-bachelor" type="radio" name="radio-marital-group" value="bachelor">
+             <span class="heading-small">Never married (Bachelor or spinster)</span><br>
+           </label>
+           <label for="radio-widow" class="block-label">
+             <input id="radio-widow" type="radio" name="radio-marital-group" value="widow">
+             <span class="heading-small">Widow/widower/civil partner is deceased</span><br>
+           </label>
+		<label for="radio-married" class="block-label">
+             <input id="radio-married" type="radio" name="radio-marital-group" value="married">
+             <span class="heading-small">Married/in a civil partnership</span><br>
+           </label>
+		<label for="radio-divorced" class="block-label">
+             <input id="radio-divorced" type="radio" name="radio-marital-group" value="divorced">
+             <span class="heading-small">Divorced/civil partnership is dissolved</span><br>
+           </label>
+		<label for="radio-separated" class="block-label" data-target="separation-details">
+             <input id="radio-separated" type="radio" name="radio-marital-group" value="separated">
+             <span class="heading-small">Judicially separated</span><br>
+           </label>
+	       <div class="panel panel-border-narrow js-hidden" id="separation-details">
+             	<!-- surname -->
+			<div class="form-group">
+				<label class="form-label-bold" for="full-name">What is the name of their former spouse?</label>
+				<input type="text" class="form-control" id="surname" name="surname">
+			</div>
+			<!-- Date of birth -->
+			<div class="form-group">
+				<fieldset>
+					<legend class="form-label-bold">What was the date of their judicial separation?</legend>
+					<p class="form-hint">This is must match the date on the Decree of Dissolution of Partnership</p>
+					<div class="form-date">
+						<div class="form-group form-group-day">
+							<label for="dob-day">Day</label>
+							<input class="form-control" id="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+						</div>
+						<div class="form-group form-group-month">
+							<label for="dob-month">Month</label>
+							<input class="form-control" id="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+						</div>
+						<div class="form-group form-group-year">
+							<label for="dob-year">Year</label>
+							<input class="form-control" id="dob-year" type="number" pattern="[0-9]*" min="0" max="2014">
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<!-- court -->
+			<div class="form-group">
+				<label class="form-label-bold" for="full-name">
+					What is the name of the court where the Decree of Dissolution of Partnership was issued?
+				</label>
+				<input type="text" class="form-control" id="surname" name="surname">
+			</div>
+           </div>
+         </fieldset>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+  </form>
+
+</main>
+{% endblock %}

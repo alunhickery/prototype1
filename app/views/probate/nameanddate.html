@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Probate form
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  {% include "probate/includes/breadcrumb_probate.html" %}
+	<form action="/probate/names" method="post" class="form">
+		<h1 class="form-title heading-large">Who he is the deceased?</h1>
+		<!-- Deceased details -->
+		<div class="form-group">
+			<!-- full name -->
+			<label class="form-label-bold" for="full-name">Their name</label>
+			<p class="form-hint">This is must appear exactly as it written on the death certificate</p>
+			<input type="text" class="form-control" id="forename" name="forename">
+		</div>
+		<div class="form-group">
+			<label class="form-label-bold" for="full-name">Is this the same as it appears on the will?</label>
+			<fieldset class="inline">
+				<legend class="visuallyhidden">Is this the same as it appears on the will</legend>
+				<label class="block-label" for="radio-inline-1">
+					<input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">Yes
+				</label>
+				<label class="block-label" for="radio-inline-2">
+					<input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">No
+				</label>
+			</fieldset>
+		</div>
+		<div class="form-group">
+			<label class="form-label-bold" for="full-name">Are any other names needed on the Grant?</label>
+			<fieldset class="inline">
+				<legend class="visuallyhidden">Is this the same as it appears on the will</legend>
+				<label class="block-label" for="radio-inline-1">
+					<input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">Yes
+				</label>
+				<label class="block-label" for="radio-inline-2">
+					<input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">No
+				</label>
+			</fieldset>
+		</div>
+		<div class="form-group">
+			<input type="submit" class="button" value="Continue">
+		</div>
+	</form>
+</main>
+{% endblock %}
+					
