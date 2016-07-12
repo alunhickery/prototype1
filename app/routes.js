@@ -15,7 +15,13 @@ router.post('/probate/nameanddate', function(req,res) {
 });
 
 router.post('/probate/address', function(req,res) {
+    console.log(req.body);
+  if(req.body.radio_address_england_group == 'No'){
+ res.render('probate/stop',{'reason' : 'Deceased was not domiciled in England or Wales. The application would be stopped at this point.'});
+}
+else {
 	res.render('probate/maritalstatus', { 'form': req.body });
+}
 });
 
 router.post('/probate/maritalstatus', function(req,res) {
@@ -24,7 +30,7 @@ router.post('/probate/maritalstatus', function(req,res) {
 
 router.post('/probate/will', function (req,res){
  if(req.body.radio_will_group == 'No'){
- res.render('probate/stop',{'reason' : 'No will is available. So the application would be stopped at this point.'});
+ res.render('probate/stop',{'reason' : 'No will is available. The application would be stopped at this point.'});
 }
 else {
 	res.render('probate/executors', { 'form': req.body });
