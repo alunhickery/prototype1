@@ -10,28 +10,24 @@ router.get('/', function (req, res) {
   res.render('index');
 });
 
-router.post('/probate/names', function(req,res) {
+router.post('/probate/nameanddate', function(req,res) {
 	res.render('probate/address', { 'form': req.body });
 });
 
 router.post('/probate/address', function(req,res) {
-	res.render('probate/marriage', { 'form': req.body });
+	res.render('probate/maritalstatus', { 'form': req.body });
 });
 
-router.post('/probate/marriage', function(req,res) {
+router.post('/probate/maritalstatus', function(req,res) {
 	res.render('probate/will', { 'form': req.body });
 });
 
 router.post('/probate/will', function(req,res) {
-	res.render('probate/applicant', { 'form': req.body });
-});
-
-router.post('/probate/applicant', function(req,res) {
 	res.render('probate/executors', { 'form': req.body });
 });
 
 router.post('/probate/executors', function(req,res) {
-	res.render('probate/review', { 'form': req.body });
+	res.render('probate/summary', { 'form': req.body });
 });
 
 // Example routes - feel free to delete these
