@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+
+  <form action="/probate/stop" method="post" class="form">
+    <h1 class="form-title heading-large">
+    	{{reason}}
+     	Click continue to return to the start of the prototype.
+    	
+    </h1>
+
+    <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+  </form>
+
+</main>
+{% endblock %}
