@@ -9,6 +9,7 @@ var path = require('path'),
     bodyParser = require('body-parser'),
     browserSync = require('browser-sync'),
     config = require(__dirname + '/app/config.js'),
+    language = require(__dirname + '/app/language.js'),
     port = (process.env.PORT || config.port),
     utils = require(__dirname + '/lib/utils.js'),
     packageJson = require(__dirname + '/package.json'),
@@ -85,6 +86,7 @@ app.use(function (req, res, next) {
   res.locals.serviceName=config.serviceName;
   res.locals.cookieText=config.cookieText;
   res.locals.releaseVersion="v" + releaseVersion;
+  res.locals.language=language;
   next();
 });
 
