@@ -12,7 +12,7 @@
   <form action="/probate/maritalstatus" method="post" class="form">
     <h1 class="form-title heading-large">Who is the deceased?</h1>
 	<div class="form-group">
-	   <label class="form-label-bold" for="full-name">What was the marital status of the deceased when they died?</label>
+	   <legend class="form-label-bold">What was the marital status of the deceased when they died?</legend>
          <fieldset>
            <label for="radio-bachelor" class="block-label">
              <input id="radio-bachelor" type="radio" name="radio-marital-group" value="bachelor">
@@ -37,36 +37,36 @@
 	       <div class="panel panel-border-narrow js-hidden" id="separation-details">
              	<!-- surname -->
 			<div class="form-group">
-				<label class="form-label-bold" for="full-name">What is the name of their former spouse?</label>
-				<input type="text" class="form-control" id="surname" name="surname">
+				<label class="form-label-bold" for="input-former-spouse-name">What is the name of their former spouse?</label>
+				<input type="text" class="form-control" id="input-former-spouse-name" name="former-spouse-name">
 			</div>
 			<!-- Date of birth -->
 			<div class="form-group">
 				<fieldset>
-					<legend class="form-label-bold">What was the date of their judicial separation?</legend>
+					<label class="form-label-bold" for="separation-date-day">What was the date of their judicial separation?</label>
 					<p class="form-hint">This is must match the date on the Decree of Dissolution of Partnership</p>
 					<div class="form-date">
 						<div class="form-group form-group-day">
-							<label for="dob-day">Day</label>
-							<input class="form-control" id="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+							<label for="separation-date-day">Day</label>
+							<input class="form-control" id="separation-date-day" type="number" pattern="[0-9]*" min="0" max="31">
 						</div>
 						<div class="form-group form-group-month">
-							<label for="dob-month">Month</label>
-							<input class="form-control" id="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+							<label for="separation-date-month">Month</label>
+							<input class="form-control" id="separation-date-month" type="number" pattern="[0-9]*" min="0" max="12">
 						</div>
 						<div class="form-group form-group-year">
-							<label for="dob-year">Year</label>
-							<input class="form-control" id="dob-year" type="number" pattern="[0-9]*" min="0" max="2014">
+							<label for="separation-date-year">Year</label>
+							<input class="form-control" id="separation-date-year" type="number" pattern="[0-9]*" min="0" max="2016">
 						</div>
 					</div>
 				</fieldset>
 			</div>
 			<!-- court -->
 			<div class="form-group">
-				<label class="form-label-bold" for="full-name">
+				<label class="form-label-bold" for="separation-court-name">
 					What is the name of the court where the Decree of Dissolution of Partnership was issued?
 				</label>
-				<input type="text" class="form-control" id="surname" name="surname">
+				<input type="text" class="form-control" id="separation-court-name" name="separation-court-name">
 			</div>
            </div>
          </fieldset>

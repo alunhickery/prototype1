@@ -14,7 +14,7 @@
       The Will
     </h1>
 	<div class="form-group">
-	   <label class="form-label-bold" for="full-name">Is there a will?</label>
+	   <legend class="form-label-bold">Is there a will?</legend>
       <fieldset class="inline">
 			<legend class="visuallyhidden">Is there a will</legend>
 			<label class="block-label" for="radio-will-yes">
@@ -26,7 +26,7 @@
 		</fieldset>
     </div>
 	<div class="form-group">
-	   <label class="form-label-bold" for="full-name">Is it the original?</label>
+	   <legend class="form-label-bold">Is it the original?</legend>
 	   <p class="form-hint">You must send the original will plus three copies. 
 							We cannot process your application without the original Will.</p>
       <fieldset class="inline">
@@ -40,19 +40,19 @@
 		</fieldset>
     </div>
 	<div class="form-group">
-	   <label class="form-label-bold" for="full-name">Are there any wills made outside of England and Wales?</label>
+	   <legend class="form-label-bold">Are there any wills made outside of England and Wales?</legend>
       <fieldset class="inline">
 			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
-			<label class="block-label" for="will-address-yes">
+			<label class="block-label" for="radio-will-address-yes">
 				<input id="radio-will-address-yes" type="radio" name="radio-will-address-group" value="Yes">Yes
 			</label>
-			<label class="block-label" for="will-address-no">
+			<label class="block-label" for="radio-will-address-no">
 				<input id="radio-will-address-no" type="radio" name="radio-will-address-group" value="No">No
 			</label>
 		</fieldset>
     </div>
 	<div class="form-group">
-	   <label class="form-label-bold" for="full-name">Are there any codicils?</label>
+	   <legend class="form-label-bold">Are there any codicils?</legend>
       <fieldset class="inline">
 			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
 			<label class="block-label" for="radio-codicil-yes" data-target="codicil-details">
@@ -65,20 +65,20 @@
 				<!-- Date of birth -->
 				<div class="form-group">
 					<fieldset>
-						<legend class="form-label-bold">What is the date of the codicil?</legend>
+						<label class="form-label-bold" for="codicil-day">What is the date of the codicil?</label>
 						<p class="form-hint">For example, 20 3 1966</p>
 						<div class="form-date">
 							<div class="form-group form-group-day">
-								<label for="dob-day">Day</label>
-								<input class="form-control" id="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+								<label for="codicil-day">Day</label>
+								<input class="form-control" id="codicil-day" type="number" pattern="[0-9]*" min="0" max="31">
 							</div>
 							<div class="form-group form-group-month">
-								<label for="dob-month">Month</label>
-								<input class="form-control" id="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+								<label for="codicil-month">Month</label>
+								<input class="form-control" id="codicil-month" type="number" pattern="[0-9]*" min="0" max="12">
 							</div>
 							<div class="form-group form-group-year">
-								<label for="dob-year">Year</label>
-								<input class="form-control" id="dob-year" type="number" pattern="[0-9]*" min="0" max="2014">
+								<label for="codicil-year">Year</label>
+								<input class="form-control" id="codicil-year" type="number" pattern="[0-9]*" min="0" max="2016">
 							</div>
 						</div>
 					</fieldset>
