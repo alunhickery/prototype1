@@ -30,15 +30,27 @@
     <div class="form-group">
 	    <label class="form-label-bold" for="last-address">{{messages.address_question_2}}</label>
       <p class="form-hint">{{messages.address_hint_2}}</p>
-	    <!-- forename -->
-      <label class="form-label-bold" for="last-address">Postcode</label>
-      <input type="text" class="form-control" id="last-address" name="last-address">
-    </div>
+    </div> 
 
+    <div class="form-group">
+          <label for="postcode">Postcode</label>
+          <input type="text" class="form-control form-control-1-8" id="postcode" name="postcode">
+          <input type="submit" value="Find UK address">
+    </div>
+    <div class="form-group">
+        <label for="last-address">Select address</label>
+        <select id="last-address" class="form-control form-control-1-3" name="last_address">
+          <option>Buckingham palace road</option>
+          <option>Petty France</option>
+        </select>
+    </div> 
+            
     <div class="form-group">
       <input type="submit" class="button" value="Continue">
     </div>
   </form>
+
+
 
 </main>
 {% endblock %}
