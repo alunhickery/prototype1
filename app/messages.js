@@ -4,7 +4,6 @@
 
 module.exports = {
   welcome_title: 'Welcome',
-  nameanddate_title: '_nameanddate',
   nameanddate_header: 'About the person who died',
   nameanddate_question_1:'What was their full name?',
   nameanddate_hint_1: 'As shown on their death certificate.',
@@ -48,7 +47,7 @@ module.exports = {
   will_question_hint_4: 'Will made in another country apart from England and Wales.',
   will_question_5: 'Are there any codicils?',
   will_question_hint_5: 'Changes or updates to the will.',
-  
+
   executors_title: 'The Executors',
   summary_title: 'Summary',
   nextsteps_title: 'Next Steps',
@@ -56,7 +55,8 @@ module.exports = {
   stop_foreign_domicile: 'Deceased was not domiciled in England or Wales. The application would be stopped at this point.',
   stop_no_will: 'No will is available. The application would be stopped at this point.',
   address_title: 'Address',
-
+  nameanddate_title: 'nameanddate',
+ 
 
 
 
