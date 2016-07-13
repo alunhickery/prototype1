@@ -11,12 +11,13 @@
 
   <form action="/probate/address" method="post" class="form">
     <h1 class="form-title heading-large">
-      Who is the deceased?
+      {{messages.address_header}}
     </h1>
 	<div class="form-group">
-	   <legend class="form-label-bold">Was the deceased domiciled in England or Wales?</legend>
+	    <legend class="form-label-bold">{{messages.address_question_1}}</legend>
+      <p class="form-hint">{{messages.address_hint_1}}</p>
       <fieldset class="inline">
-			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
+			<legend class="visuallyhidden">{{address_question_1}}</legend>
 			<label class="block-label" for="radio-address-england-yes">
 				<input id="radio-address-england-yes" type="radio" name="radio_address_england_group" value="Yes">Yes
 			</label>
@@ -27,8 +28,9 @@
     </div>
     <!-- Deceased details -->
     <div class="form-group">
-	  <label class="form-label-bold" for="last-address">What was the deceased last known address?</label>
-	  <!-- forename -->
+	    <label class="form-label-bold" for="last-address">{{messages.address_question_2}}</label>
+      <p class="form-hint">{{messages.address_hint_2}}</p>
+	    <!-- forename -->
       <label class="form-label-bold" for="last-address">Postcode</label>
       <input type="text" class="form-control" id="last-address" name="last-address">
     </div>

@@ -8,36 +8,67 @@
 <main id="content" role="main">
   {% include "probate/includes/breadcrumb_probate.html" %}
 	<form action="/probate/nameanddate" method="post" class="form">
-		<h1 class="form-title heading-large">Who he is the deceased?</h1>
+		<h1 class="form-title heading-large">{{messages.nameanddate_header}}</h1>
 		<!-- Deceased details -->
 		<div class="form-group">
 			<!-- full name -->
-			<label class="form-label-bold" for="input-deceased-full-name">Their name</label>
-			<p class="form-hint">This is must appear exactly as it written on the death certificate</p>
+			<label class="form-label-bold" for="input-deceased-full-name">{{messages.nameanddate_question_1}}</label>
+			<p class="form-hint">{{messages.nameanddate_hint_1}}</p>
 			<input type="text" class="form-control" id="input-deceased-full-name" name="deceased_full_name" value="{{form.nameanddate.deceased_full_name}}">
 		</div>
 		<div class="form-group">
-			<legend class="form-label-bold">Is this the same as it appears on the will?</legend>
+			<legend class="form-label-bold">{{messages.nameanddate_question_2}}</legend>
+			<p class="form-hint">{{messages.nameanddate_hint_2}}</p>
 			<fieldset class="inline">
-				<legend class="visuallyhidden">Is this the same as it appears on the will</legend>
-				<label class="block-label" for="radio-will-name-yes">
-					<input id="radio-will-name-yes" type="radio" name="radio_will_name_group" value="Yes">Yes
-				</label>
-				<label class="block-label" for="radio-will-name-no">
-					<input id="radio-will-name-no" type="radio" name="radio_will_name_group" value="No">No
-				</label>
-			</fieldset>
-		</div>
-		<div class="form-group">
-			<legend class="form-label-bold">Are any other names needed on the Grant?</legend>
-			<fieldset class="inline">
-				<legend class="visuallyhidden">Is this the same as it appears on the will</legend>
+				<legend class="visuallyhidden">{{messages.nameanddate_question_2}}</legend>
 				<label class="block-label" for="radio-other-names-yes">
 					<input id="radio-other-names-yes" type="radio" name="radio_other_names_group" value="Yes">Yes
 				</label>
 				<label class="block-label" for="radio-other-names-no">
 					<input id="radio-other-names-no" type="radio" name="radio_other_names_group" value="No">No
 				</label>
+			</fieldset>
+		</div>
+		<!-- Date of birth -->
+		<div class="form-group">
+			<fieldset>
+				<label class="form-label-bold" for="codicil-day">{{messages.nameanddate_question_3}}</label>
+				<p class="form-hint">{{messages.nameanddate_hint_3}}</p>
+				<div class="form-date">
+					<div class="form-group form-group-day">
+						<label for="codicil-day">Day</label>
+						<input class="form-control" id="codicil-day" type="number" pattern="[0-9]*" min="0" max="31">
+					</div>
+					<div class="form-group form-group-month">
+						<label for="codicil-month">Month</label>
+						<input class="form-control" id="codicil-month" type="number" pattern="[0-9]*" min="0" max="12">
+					</div>
+					<div class="form-group form-group-year">
+						<label for="codicil-year">Year</label>
+						<input class="form-control" id="codicil-year" type="number" pattern="[0-9]*" min="0" max="2016">
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<!-- Date of death -->
+		<div class="form-group">
+			<fieldset>
+				<label class="form-label-bold" for="codicil-day">{{messages.nameanddate_question_4}}</label>
+				<p class="form-hint">{{messages.nameanddate_hint_4}}</p>
+				<div class="form-date">
+					<div class="form-group form-group-day">
+						<label for="codicil-day">Day</label>
+						<input class="form-control" id="codicil-day" type="number" pattern="[0-9]*" min="0" max="31">
+					</div>
+					<div class="form-group form-group-month">
+						<label for="codicil-month">Month</label>
+						<input class="form-control" id="codicil-month" type="number" pattern="[0-9]*" min="0" max="12">
+					</div>
+					<div class="form-group form-group-year">
+						<label for="codicil-year">Year</label>
+						<input class="form-control" id="codicil-year" type="number" pattern="[0-9]*" min="0" max="2016">
+					</div>
+				</div>
 			</fieldset>
 		</div>
 		<div class="form-group">

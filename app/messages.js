@@ -12,7 +12,7 @@ module.exports = {
   nameanddate_hint_2: 'A nickname, maiden name or title.',
   nameanddate_question_3: 'What is the date they were born?',
   nameanddate_hint_3: 'As shown on their birth certificate.',
-  nameanddate_question_4: 'Was is the date they died?',
+  nameanddate_question_4: 'What is the date they died?',
   nameanddate_hint_4: 'As shown on their death certificate.',
   nameanddate_stop_4: 'You need the death certificate to complete this application.',
 

@@ -10,66 +10,35 @@
   {% include "probate/includes/breadcrumb_probate.html" %}
 
   <form action="/probate/maritalstatus" method="post" class="form">
-    <h1 class="form-title heading-large">Who is the deceased?</h1>
+    <h1 class="form-title heading-large">{{messages.maritalstatus_header}}</h1>
 	<div class="form-group">
-	   <legend class="form-label-bold">What was the marital status of the deceased when they died?</legend>
-         <fieldset>
+	   <legend class="form-label-bold">{{messages.maritalstatus_question_1}}</legend>
+	   <p class="form-hint">{{messages.maritalstatus_hint_1}}</p>
+       <fieldset>
            <label for="radio-bachelor" class="block-label">
              <input id="radio-bachelor" type="radio" name="radio_marital_group" value="bachelor">
-             <span class="heading-small">Never married (Bachelor or spinster)</span><br>
+             <span class="heading-small">{{messages.maritalstatus_radio_1}}</span><br>
            </label>
            <label for="radio-widow" class="block-label">
              <input id="radio-widow" type="radio" name="radio_marital_group" value="widow">
-             <span class="heading-small">Widow/widower/civil partner is deceased</span><br>
+             <span class="heading-small">{{messages.maritalstatus_radio_2}}</span><br>
+             <p class="form-hint">{{messages.maritalstatus_radio_hint_2}}</p>
            </label>
 		<label for="radio-married" class="block-label">
              <input id="radio-married" type="radio" name="radio_marital_group" value="married">
-             <span class="heading-small">Married/in a civil partnership</span><br>
+             <span class="heading-small">{{messages.maritalstatus_radio_3}}</span><br>
+             <p class="form-hint">{{messages.maritalstatus_radio_hint_3}}</p>
            </label>
 		<label for="radio-divorced" class="block-label">
              <input id="radio-divorced" type="radio" name="radio_marital_group" value="divorced">
-             <span class="heading-small">Divorced/civil partnership is dissolved</span><br>
+             <span class="heading-small">{{messages.maritalstatus_radio_4}}</span><br>
            </label>
 		<label for="radio-separated" class="block-label" data-target="separation-details">
              <input id="radio-separated" type="radio" name="radio_marital_group" value="separated">
-             <span class="heading-small">Judicially separated</span><br>
+             <span class="heading-small">{{messages.maritalstatus_radio_5}}</span><br>
+             <p class="form-hint">{{messages.maritalstatus_radio_hint_5}}</p>
            </label>
-	       <div class="panel panel-border-narrow js-hidden" id="separation-details">
-             	<!-- surname -->
-			<div class="form-group">
-				<label class="form-label-bold" for="input-former-spouse-name">What is the name of their former spouse?</label>
-				<input type="text" class="form-control" id="input-former-spouse-name" name="former_spouse_name">
-			</div>
-			<!-- Date of birth -->
-			<div class="form-group">
-				<fieldset>
-					<label class="form-label-bold" for="separation-date-day">What was the date of their judicial separation?</label>
-					<p class="form-hint">This is must match the date on the Decree of Dissolution of Partnership</p>
-					<div class="form-date">
-						<div class="form-group form-group-day">
-							<label for="separation-date-day">Day</label>
-							<input class="form-control" id="separation-date-day" name="separation_date_day" type="number" pattern="[0-9]*" min="0" max="31">
-						</div>
-						<div class="form-group form-group-month">
-							<label for="separation-date-month">Month</label>
-							<input class="form-control" id="separation-date-month" name="separation_date_month" type="number" pattern="[0-9]*" min="0" max="12">
-						</div>
-						<div class="form-group form-group-year">
-							<label for="separation-date-year">Year</label>
-							<input class="form-control" id="separation-date-year" name="separation_date_year" type="number" pattern="[0-9]*" min="0" max="2016">
-						</div>
-					</div>
-				</fieldset>
-			</div>
-			<!-- court -->
-			<div class="form-group">
-				<label class="form-label-bold" for="separation-court-name">
-					What is the name of the court where the Decree of Dissolution of Partnership was issued?
-				</label>
-				<input type="text" class="form-control" id="separation-court-name" name="separation_court_name">
-			</div>
-           </div>
-         </fieldset>
+       </fieldset>
     </div>
     <div class="form-group">
       <input type="submit" class="button" value="Continue">

@@ -11,13 +11,13 @@
 
   <form action="/probate/will" method="post" class="form">
     <h1 class="form-title heading-large">
-      The Will
+      {{messages.will_header}}
     </h1>
 	<div class="form-group">
-	   <legend class="form-label-bold">Is there a will?</legend>
+	   <legend class="form-label-bold">{{messages.will_question_1}}</legend>
       <fieldset class="inline">
-			<legend class="visuallyhidden">Is there a will</legend>
-			<label class="block-label" for="radio-will-yes">
+			<legend class="visuallyhidden">{{messages.will_question_1}}</legend>
+			<label class="block-label" for="radio-will-yes" data-target="will-details">
 				<input id="radio-will-yes" type="radio" name="radio_will_group" value="Yes">Yes
 			</label>
 			<label class="block-label" for="radio-will-no">
@@ -25,24 +25,46 @@
 			</label>
 		</fieldset>
     </div>
+    <div class="panel panel-border-narrow js-hidden" id="will-details">
+		<div class="form-group">
+		   <legend class="form-label-bold">{{messages.will_question_2}}</legend>
+    	  <fieldset class="inline">
+				<legend class="visuallyhidden">{{messages.will_question_2}}</legend>
+				<label class="block-label" for="radio-will-original-yes">
+					<input id="radio-will-original-yes" type="radio" name="radio_will_original_group" value="Yes">Yes
+				</label>
+				<label class="block-label" for="radio-will-original-no">
+					<input id="radio-will-original-no" type="radio" name="radio_will_original_group" value="No">No
+				</label>
+			</fieldset>
+    	</div>
+		<!-- Date of birth -->
+		<div class="form-group">
+			<fieldset>
+				<label class="form-label-bold" for="codicil-day">{{messages.will_question_3}}</label>
+				<p class="form-hint">{{messages.will_question_hint_3}}</p>
+				<div class="form-date">
+					<div class="form-group form-group-day">
+						<label for="codicil-day">Day</label>
+						<input class="form-control" id="codicil-day" type="number" pattern="[0-9]*" min="0" max="31">
+					</div>
+					<div class="form-group form-group-month">
+						<label for="codicil-month">Month</label>
+						<input class="form-control" id="codicil-month" type="number" pattern="[0-9]*" min="0" max="12">
+					</div>
+					<div class="form-group form-group-year">
+						<label for="codicil-year">Year</label>
+						<input class="form-control" id="codicil-year" type="number" pattern="[0-9]*" min="0" max="2016">
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	</div>    
 	<div class="form-group">
-	   <legend class="form-label-bold">Is it the original?</legend>
-	   <p class="form-hint">You must send the original will plus three copies. 
-							We cannot process your application without the original Will.</p>
+	   <legend class="form-label-bold">{{messages.will_question_4}}</legend>
+	   <p class="form-hint">{{messages.will_question_hint_4}}</p>
       <fieldset class="inline">
-			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
-			<label class="block-label" for="radio-will-original-yes">
-				<input id="radio-will-original-yes" type="radio" name="radio_will_original_group" value="Yes">Yes
-			</label>
-			<label class="block-label" for="radio-will-original-no">
-				<input id="radio-will-original-no" type="radio" name="radio_will_original_group" value="No">No
-			</label>
-		</fieldset>
-    </div>
-	<div class="form-group">
-	   <legend class="form-label-bold">Are there any wills made outside of England and Wales?</legend>
-      <fieldset class="inline">
-			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
+			<legend class="visuallyhidden">{{messages.will_question_4}}</legend>
 			<label class="block-label" for="radio-will-address-yes">
 				<input id="radio-will-address-yes" type="radio" name="radio_will_address_group" value="Yes">Yes
 			</label>
@@ -52,42 +74,20 @@
 		</fieldset>
     </div>
 	<div class="form-group">
-	   <legend class="form-label-bold">Are there any codicils?</legend>
+	   <legend class="form-label-bold">{{messages.will_question_5}}</legend>
+	   <p class="form-hint">{{messages.will_question_hint_5}}</p>
       <fieldset class="inline">
-			<legend class="visuallyhidden">Was the deceased domiciled in England or Wales</legend>
-			<label class="block-label" for="radio-codicil-yes" data-target="codicil-details">
+			<legend class="visuallyhidden">{{messages.will_question_5}}</legend>
+			<label class="block-label" for="radio-codicil-yes">
 				<input id="radio-codicil-yes" type="radio" name="radio_codicil_group" value="Yes">Yes
 			</label>
 			<label class="block-label" for="radio-codicil-no">
 				<input id="radio-codicil-no" type="radio" name="radio_codicil_group" value="No">No
 			</label>
 			<div class="panel panel-border-narrow js-hidden" id="codicil-details">
-				<!-- Date of birth -->
-				<div class="form-group">
-					<fieldset>
-						<label class="form-label-bold" for="codicil-day">What is the date of the codicil?</label>
-						<p class="form-hint">For example, 20 3 1966</p>
-						<div class="form-date">
-							<div class="form-group form-group-day">
-								<label for="codicil-day">Day</label>
-								<input class="form-control" id="codicil-day" type="number" pattern="[0-9]*" min="0" max="31">
-							</div>
-							<div class="form-group form-group-month">
-								<label for="codicil-month">Month</label>
-								<input class="form-control" id="codicil-month" type="number" pattern="[0-9]*" min="0" max="12">
-							</div>
-							<div class="form-group form-group-year">
-								<label for="codicil-year">Year</label>
-								<input class="form-control" id="codicil-year" type="number" pattern="[0-9]*" min="0" max="2016">
-							</div>
-						</div>
-					</fieldset>
-				</div>
+
 			</div>
 		</fieldset>
-    </div>
-	<div class="form-group">
-      <input type="submit" class="button" value="Continue">
     </div>
 
   </form>
