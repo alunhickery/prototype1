@@ -72,7 +72,8 @@ app.use(bodyParser.urlencoded({
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: Math.round(Math.random()*100000).toString()
+  secret: Math.round(Math.random()*100000).toString(),
+  cookie:{}
 }));
 
 // send assetPath to all views
