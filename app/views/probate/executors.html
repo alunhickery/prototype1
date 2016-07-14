@@ -11,81 +11,44 @@
 
   <form action="/probate/executors" method="post" class="form">
 	<div class="form-group">
-	   <legend class="form-label-bold">Are you an executor/applicant?</legend>
-      <fieldset class="inline">
-			<legend class="visuallyhidden">Are you an executor/applicant</legend>
-			<label class="block-label" for="radio-applicant-yes" data-target="applicant-details">
-				<input id="radio-applicant-yes" type="radio" name="radio_executor_group" value="Yes">Yes
-			</label>
-			<label class="block-label" for="radio-applicant-no">
-				<input id="radio-applicant-no" type="radio" name="radio_executor_group" value="No">No
-			</label>
-			<div class="panel panel-border-narrow js-hidden" id="applicant-details">
-				<div class="form-group">
-					<!-- full name -->
-					<label class="form-label-bold" for="input-full-name">Please give your full name as it appears on the will</label>
-					<input type="text" class="form-control" id="input-full-name" name="full-name">
-				</div>
-				<div class="form-group">
-					<legend class="form-label-bold">Are you known by another name?</legend>
-					<fieldset class="inline">
-						<legend class="visuallyhidden">Are you known by another name</legend>
-						<label class="block-label" for="radio-applicant-alias-yes">
-							<input id="radio-applicant-alias-yes" type="radio" name="radio-applicant-alias-group" value="Yes">Yes
-						</label>
-						<label class="block-label" for="radio-applicant-alias-no">
-							<input id="radio-applicant-alias-no" type="radio" name="radio-applicant-alias-group" value="No">No
-						</label>
-					</fieldset>
-				</div>
-			</div>
-		</fieldset>
+	   <legend class="form-label-bold">{{messages.executors_question_1}}</legend>
+	   <table>
+    	<tbody>
+      		<tr>
+      		  <td colspan="2">Executor 1</td>
+      		  <td colspan="2">{{form.applicant_firstname}} {{form.applicant_lastname}}</td>
+      		</tr>
+      	{% if form.executors.executor_lastname %}
+      		<tr>
+      		  <td colspan="2">Executor 2</td>
+      		  <td colspan="2">{{form.executors.executor_firstname}} {{form.executors.executor_lastname}}</td>
+      		</tr>
+		{% endif %}
+      	</tbody>
+       </table>
     </div>
-    <div class="form-group">
-	   <legend class="form-label-bold">Please list any executors who are not making this application with you an explain why</legend>
-         <fieldset>
-           <label for="radio-executor-1" class="block-label">
-             <input id="radio-executor-1" type="radio" name="radio-executors-group" value="bachelor">
-             <span class="heading-small">Executor 1</span><br>
-           </label>
-           <label for="radio-executor-2" class="block-label">
-             <input id="radio-executor-2" type="radio" name="radio-executors-group" value="widow">
-             <span class="heading-small">Executor 2</span><br>
-           </label>
-		<label for="radio-executor-3" class="block-label" data-target="executors-details">
-             <input id="radio-executor-3" type="radio" name="radio-executors-group" value="separated">
-             <span class="heading-small">Executor 3</span><br>
-           </label>
-	       <div class="panel panel-border-narrow js-hidden" id="executors-details">
-			  <div class="form-group">
-  			     <fieldset>
-					<label for="radio-executor-died-before" class="block-label">
-						<input id="radio-executor-died-before" type="radio" name="radio-executor-3-group" value="bachelor">
-						<span class="heading-small">They died before the deceased person</span><br>
-					</label>
-					<label for="radio-executor-died-after" class="block-label">
-						<input id="radio-executor-died-after" type="radio" name="radio-executor-3-group" value="widow">
-						<span class="heading-small">They died after the deceased person</span><br>
-					</label>
-					<label for="radio-executor-reserved" class="block-label">
-						<input id="radio-executor-reserved" type="radio" name="radio-executor-3-group" value="separated">
-						<span class="heading-small">Power reserved</span><br>
-					</label>
-					<label for="radio-executor-renunciation" class="block-label">
-						<input id="radio-executor-renunciation" type="radio" name="radio-executor-3-group" value="bachelor">
-						<span class="heading-small">Renunciation</span><br>
-					</label>
-					<label for="radio-executor-attorney" class="block-label">
-						<input id="radio-executor-attorney" type="radio" name="radio-executor-3-group" value="bachelor">
-						<span class="heading-small">Power of Attorney</span><br>
-					</label>
-				  </fieldset>
-			  </div>
-           </div>
-         </fieldset>
-    </div>
+    	<div class="form-group {{'' if form.executors.addexecutor else 'visuallyhidden'}}">
+			<!-- First Name -->
+			<legend class="form-label-bold">{{messages.nameanddate_question_1}}</legend>
+			<p class="form-hint">{{messages.nameanddate_question_hint_1}}</p>
+			<label class="form-label-bold" for="executor_firstname">Firstname</label>
+			<input type="text" class="form-control" id="executor_firstname" name="executor_firstname" value="{{form.executors.executor_firstname}}">
+		</div>	
+    	<div class="form-group {{'' if form.executors.addexecutor else 'visuallyhidden'}}">
+			<!-- Last Name -->
+			<label class="form-label-bold" for="executor_lastname">Last name</label>
+			<input type="text" class="form-control" id="executor_lastname" name="executor_lastname" value="{{form.executors.executor_lastname}}">
+		</div>
+    	
+
+<div class="form-group">
+    <label class="link">
+    	<input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
+    	{{messages.executors_link_add_executor}}
+    </label></div>
+
 	<div class="form-group">
-      <input type="submit" class="button" value="Continue">
+      <input type="submit" class="button" name="continue" value="Continue">
     </div>
   </form>
 

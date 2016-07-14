@@ -17,6 +17,11 @@ router.get('/probate/nameanddate', function(req,res) {
   res.render('probate/nameanddate', {'form': req.session.form});
 });
 
+router.get('/probate/executors', function(req,res) {
+  if (!req.session.form) {req.session.form = {};};
+  res.render('probate/executors', {'form': req.session.form});
+});
+
 router.post('/probate/nameanddate', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
   req.session.form.nameanddate = req.body;
@@ -55,12 +60,18 @@ else {
 router.post('/probate/executors', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
   req.session.form.executors = req.body;
-	res.render('probate/iht', {'form': req.session.form});
+  console.log(req.session.form.executors.executor_firstname);
+  console.log(req.session.form.executors.executor_lastname);
+  if (req.body.addexecutor) {
+    res.render('probate/executors', {'form': req.session.form});
+  } else {
+    res.render('probate/iht', {'form': req.session.form});
+  }
 });
 
 router.post('/probate/iht', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
-  req.session.form.executors = req.body;
+  req.session.form.iht = req.body;
   res.render('probate/summary', {'form': req.session.form});
 });
 

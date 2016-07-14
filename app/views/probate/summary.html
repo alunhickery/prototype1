@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td>Full Name</td>
-        <td>{{form.nameanddate.deceased_full_name}}</td>
+        <td>{{form.nameanddate.deceased_firstname}} {{form.nameanddate.deceased_lastname}}</td>
         <td class="change-answer"><a href="/probate/nameanddate">Change <span class="visuallyhidden">Full Name</span></a></td>
       </tr>
       <tr>
@@ -68,7 +68,17 @@
       <tr>
         <td>Are you an executor/applicant?</td>
         <td>{{form.executors.radio_executor_group}}</td>
-        <td class="change-answer"><a href="/probate/executors">Change <span class="visuallyhidden">Are you an executor/applicant?</span></a></td>
+        <td class="change-answer"><a href="/probate/executors">Change</a></td>
+      </tr>
+      <tr>
+        <td>Executor 1</td>
+        <td>{{form.applicant_firstname}} {{form.applicant_lastname}}</td>
+        <td class="change-answer"><a href="/probate/executors">Change</a></td>
+      </tr>
+      <tr>
+        <td>Executor 2</td>
+        <td>{{form.executors.executor_firstname}} {{form.executors.executor_lastname}}</td>
+        <td class="change-answer"><a href="/probate/executors">Change</a></td>
       </tr>
     </tbody>
   </table>

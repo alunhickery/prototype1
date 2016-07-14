@@ -67,6 +67,9 @@ module.exports = {
   iht_question_4: 'Net Estate figure (£)',
   iht_question_hint_4: 'Whole pounds only',
 
+  executors_question_1: 'Please list all of the Executors named on the Will',
+  executors_link_add_executor: 'Add another Executor named on the Will',
+
 
   executors_title: 'The Executors',
   summary_title: 'Summary',
