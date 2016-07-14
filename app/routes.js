@@ -55,7 +55,13 @@ else {
 router.post('/probate/executors', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
   req.session.form.executors = req.body;
-	res.render('probate/summary', {'form': req.session.form});
+	res.render('probate/iht', {'form': req.session.form});
+});
+
+router.post('/probate/iht', function(req,res) {
+  if (!req.session.form) {req.session.form = {};};
+  req.session.form.executors = req.body;
+  res.render('probate/summary', {'form': req.session.form});
 });
 
 router.post('/probate/stop',function(req,res){

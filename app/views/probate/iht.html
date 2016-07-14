@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+  {% include "probate/includes/breadcrumb_probate.html" %}
+
+  <form action="/probate/iht" method="post" class="form">
+	<div class="form-group">
+	   <legend class="form-label-bold">{{messages.iht_question_1}}</legend>
+	   <p class="form-hint">{{messages.iht_question_hint_1}}</p>
+      <fieldset class="inline">
+			<legend class="visuallyhidden">{{messages.iht_question_1}}</legend>
+			<label class="block-label" for="radio_iht_yes" data-target="iht_details">
+				<input id="radio_iht_yes" type="radio" name="radio_iht_group" value="Yes">Yes
+			</label>
+			<label class="block-label" for="radio_iht_no">
+				<input id="radio-radio_iht_no-no" type="radio" name="radio_iht_group" value="No">No
+			</label>
+			<div class="panel panel-border-narrow js-hidden" id="iht_details">
+				<div class="form-group">
+					<!-- full name -->
+					<label class="form-label-bold" for="input_iht_id">{{messages.iht_question_2}}</label>
+					<p class="form-hint">{{messages.iht_question_hint_2}}</p>
+					<input type="text" class="form-control" id="input_iht_id" name="input_iht_id">
+				</div>
+				<div class="form-group">
+					<!-- full name -->
+					<label class="form-label-bold" for="input_iht_gross">{{messages.iht_question_3}}</label>
+					<p class="form-hint">{{messages.iht_question_hint_3}}</p>
+					<input type="text" class="form-control" id="input_iht_gross" name="input_iht_gross">
+				</div>
+				<div class="form-group">
+					<!-- full name -->
+					<label class="form-label-bold" for="input_iht_net">{{messages.iht_question_4}}</label>
+					<p class="form-hint">{{messages.iht_question_hint_4}}</p>
+					<input type="text" class="form-control" id="input_iht_net" name="input_iht_net">
+				</div>
+			</div>
+		</fieldset>
+    </div>
+	<div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+  </form>
+
+</main>
+{% endblock %}
