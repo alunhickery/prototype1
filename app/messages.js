@@ -4,6 +4,15 @@
 
 module.exports = {
   welcome_title: 'Welcome',
+  applicant_header:'About the Applicants',
+  applicant_firstname_question:'First name',
+  applicant_lastname_question:'Last name',
+  applicant_address_question:'Address',
+  applicant_home_phone_number_question:'Home phone number',
+  applicant_mobilework_phone_number_question:'Mobile/work phone number',
+  applicant_email_address_question:'Email address',
+  applicant_relationship_deceased:'Relationship to the deceased',
+
   nameanddate_header: 'About the person who died',
   nameanddate_question_1:'What was their full name?',
   nameanddate_question_hint_1: 'As shown on their death certificate.',
