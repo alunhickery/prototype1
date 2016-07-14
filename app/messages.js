@@ -12,6 +12,7 @@ module.exports = {
   applicant_mobilework_phone_number_question:'Mobile/work phone number',
   applicant_email_address_question:'Email address',
   applicant_relationship_deceased:'Relationship to the deceased',
+  applicant_executor_question:'Are you an executor',
 
   nameanddate_header: 'About the person who died',
   nameanddate_question_1:'What was their full name?',
