@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 router.get('/', function (req, res) {
-  res.render('index');
+  res.render('/probate/welcome');
 });
 
 router.get('/probate/applicant', function(req,res) {
