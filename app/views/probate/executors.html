@@ -27,25 +27,26 @@
       	</tbody>
        </table>
     </div>
-    	<div class="form-group {{'' if form.executors.addexecutor else 'visuallyhidden'}}">
+    	<div class="form-group {{'' if form.executors.addexecutor and not form.executors.executor_firstname else 'visuallyhidden'}}">
 			<!-- First Name -->
 			<legend class="form-label-bold">{{messages.nameanddate_question_1}}</legend>
 			<p class="form-hint">{{messages.nameanddate_question_hint_1}}</p>
 			<label class="form-label-bold" for="executor_firstname">Firstname</label>
 			<input type="text" class="form-control" id="executor_firstname" name="executor_firstname" value="{{form.executors.executor_firstname}}">
 		</div>	
-    	<div class="form-group {{'' if form.executors.addexecutor else 'visuallyhidden'}}">
+    	<div class="form-group {{'' if form.executors.addexecutor and not form.executors.executor_firstname else 'visuallyhidden'}}">
 			<!-- Last Name -->
 			<label class="form-label-bold" for="executor_lastname">Last name</label>
 			<input type="text" class="form-control" id="executor_lastname" name="executor_lastname" value="{{form.executors.executor_lastname}}">
 		</div>
-    	
-
-<div class="form-group">
-    <label class="link">
-    	<input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
-    	{{messages.executors_link_add_executor}}
-    </label></div>
+	{% if not form.executors.executor_firstname %}
+		<div class="form-group">
+    		<label class="link">
+    			<input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
+   	 			{{messages.executors_link_add_executor}}
+    		</label>
+    	</div>
+    {% endif %}
 
 	<div class="form-group">
       <input type="submit" class="button" name="continue" value="Continue">

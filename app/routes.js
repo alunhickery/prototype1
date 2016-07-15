@@ -63,8 +63,6 @@ else {
 router.post('/probate/executors', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
   req.session.form.executors = req.body;
-  console.log(req.session.form.executors.executor_firstname);
-  console.log(req.session.form.executors.executor_lastname);
   if (req.body.addexecutor) {
     res.render('probate/executors', {'form': req.session.form});
   } else {
