@@ -1,66 +1,32 @@
-{% extends "layout.html" %}
+{% extends "layout_unbranded.html" %}
 
 {% block page_title %}
-  {{ messages.welcome_title }}
-{% endblock %}
-
-{% block proposition_header %}
-  <!-- blank to remove the proposition header -->
-{% endblock %}
-
-{% block header_class %}
-  <!-- blank to remove the proposition header -->
+  Example without branding
 {% endblock %}
 
 {% block content %}
 
 <main id="content" role="main">
 
-  <div class="grid-row">
-    <div class="column-two-thirds">
+  <h1 class="heading-xlarge">
+ Introduction
+  </h1>
+  <p class="lede">
+    This prototype is based on requirements captured from interviews with applicants, and business needs from the probate registries. 
+</p>
+<p>It is a first step to improve the probate application process and create a simpler, streamlined online journey. The prototype covers a simple probate application, which will improved, following testing and feedback.<p>
 
-      <h1 class="heading-xlarge">
-        {% if serviceName %} {{ serviceName }} {% endif %}
-      </h1>
+<p>The user journey that this prototype covers is:<p>
+<ul>
+<li>the person completing this form is a personal applicant and the sole executor named in their mother’s will</li>
+<li>the mother resided in England, and was a widow</li>
+<li>due to the value of the estate no inheritance tax was payable and the correct forms were completed</li>
+</ul>
+<p>
+Areas that this prototype does not currently cover will be greyed out, and will be added at a later date.</pp>
 
-      <p>Use this service to:</p>
 
-      <ul class="list list-bullet">
-        <li>apply for probate</li>
-        <li>update your probate application</li>
-        <li>you need to do this in order to obtain a 'grant of representation'</li>
-      </uL>
-
-      <p>Registering takes around 5 minutes.</p>
-
-      <p>
-        <a class="button button-start" href="/probate/nameanddate" role="button">Start now</a>
-      </p>
-
-      <h2 class="heading-medium">Before you start</h2>
-
-      <p>You can also <a href="#">register by post.</a></p>
-
-      <p>The online service is also available in <a href="#">Welsh (Cymraeg).</a></p>
-
-      <p>You can’t register for this service if you’re in the UK illegally.</p>
-
-    </div>
-    <div class="column-third">
-
-      <aside class="govuk-related-items" role="complementary">
-        <h2 class="heading-medium" id="subsection-title">Subsection</h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="font-xsmall">
-            <li><a href="#">Related link</a></li>
-            <li><a href="#">Related link</a></li>
-            <li><a href="#" class="bold-xsmall">More <span class="visuallyhidden">in Subsection</span></a></li>
-          </ul>
-        </nav>
-      </aside>
-
-    </div>
-  </div>
+ 
 
 </main>
 
