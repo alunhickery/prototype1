@@ -8,41 +8,19 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+
+
 router.get('/', function (req, res) {
   res.render('probate/welcome');
 });
 
-router.get('/probate/applicant', function(req,res) {
+
+router.get('/probate/:page', function(req,res) {
+  var view = req.params.page;
   if (!req.session.form) {req.session.form = {};};
-  res.render('probate/applicant', {'form': req.session.form});
+  res.render('probate/'+ view, {'form': req.session.form});
 });
 
-router.get('/probate/nameanddate', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
-  res.render('probate/nameanddate', {'form': req.session.form});
-});
-
-router.get('/probate/executors', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
-  res.render('probate/executors', {'form': req.session.form});
-});
-
-router.get('/probate/executorsnotapplying', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
-  res.render('probate/executorsnotapplying', {'form': req.session.form});
-});
-
-router.post('/probate/applicant', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
-  req.session.form.applicant = req.body;
-  res.render('probate/nameanddate', {'form': req.session.form});
-});
-
-router.post('/probate/nameanddate', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
-  req.session.form.nameanddate = req.body;
-	res.render('probate/address', {'form': req.session.form});
-});
 
 router.post('/probate/address', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
@@ -55,11 +33,6 @@ router.post('/probate/address', function(req,res) {
   }
 });
 
-router.post('/probate/maritalstatus', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
-  req.session.form.maritalstatus = req.body;
-	res.render('probate/will', {'form': req.session.form});
-});
 
 router.post('/probate/will', function (req,res){
   if (!req.session.form) {req.session.form = {};};
@@ -71,6 +44,7 @@ router.post('/probate/will', function (req,res){
   }
 });
 
+
 router.post('/probate/executors', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
   req.session.form.executors = req.body;
@@ -81,43 +55,26 @@ router.post('/probate/executors', function(req,res) {
   }
 });
 
-router.post('/probate/executorsnotapplying', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
-  req.session.form.executorsnotapplying = req.body;
-  res.render('probate/iht', {'form': req.session.form});
-});
-
-router.post('/probate/iht', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
-  req.session.form.iht = req.body;
-  res.render('probate/summary', {'form': req.session.form});
-});
 
 router.post('/probate/stop',function(req,res){
   res.redirect('/probate/welcome');
 });
-// Example routes - feel free to delete these
 
-// Passing data into a page
 
-router.get('/examples/template-data', function (req, res) {
-  res.render('examples/template-data', { 'name' : 'Foo' });
+router.post('/probate/:page', function(req,res) {
+  var page_name = req.params.page;
+  if (!req.session.form) {req.session.form = {};};
+  req.session.form[page_name] = req.body;
+  res.render('probate/' + getNextPage(page_name), {'form': req.session.form});
 });
 
-// Branching
 
-router.get('/examples/over-18', function (req, res) {
-  // get the answer from the query string (eg. ?over18=false)
-  var over18 = req.query.over18;
-  if (over18 == "false"){
-    // redirect to the relevant page
-    res.redirect("/examples/under-18");
-  } else {
-    // if over18 is any other value (or is missing) render the page requested
-    res.render('examples/over-18');
-  }
-});
+function getNextPage(currentPage) {
+  pageList = ['welcome','applicant','nameanddate','address','maritalstatus','will','executors','executorsnotapplying','iht','summary'];
+  index = pageList.indexOf(currentPage);
+  if(index >= 0 && index < pageList.length - 1)
+    return pageList[index + 1];
+}
 
-// add your routes here
 
 module.exports = router;

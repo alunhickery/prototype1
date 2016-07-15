@@ -4,6 +4,7 @@
 
 module.exports = {
   welcome_title: 'Welcome',
+  applicant_title: 'Applicant',
   applicant_header:'About the Applicants',
   applicant_firstname_question:'First name',
   applicant_lastname_question:'Last name',
