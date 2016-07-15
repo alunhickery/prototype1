@@ -9,17 +9,17 @@
 
   {% include "probate/includes/breadcrumb_probate.html" %}
 
-  <form action="/probate/executors" method="post" class="form">
+  <form action="/probate/executorsnotapplying" method="post" class="form">
     <div class="form-group">
 	   <legend class="form-label-bold">Please list any executors who are not making this application with you an explain why</legend>
          <fieldset>
            <label for="radio-executor-1" class="block-label">
-             <input id="radio-executor-1" type="radio" name="radio-executors-group" value="bachelor">
-             <span class="heading-small">Executor 1</span><br>
+             <input id="radio-executor-1" type="radio" name="radio-executors-group" value="bachelor" disabled="disabled">
+             <span class="heading-small">{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}</span><br>
            </label>
 		<label for="radio-executor-2" class="block-label" data-target="executors-details">
              <input id="radio-executor-2" type="radio" name="radio-executors-group" value="separated">
-             <span class="heading-small">Executor 3</span><br>
+             <span class="heading-small">{{form.executors.executor_firstname}} {{form.executors.executor_lastname}}</span><br>
            </label>
 	       <div class="panel panel-border-narrow js-hidden" id="executors-details">
 			  <div class="form-group">

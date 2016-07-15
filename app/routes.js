@@ -27,6 +27,11 @@ router.get('/probate/executors', function(req,res) {
   res.render('probate/executors', {'form': req.session.form});
 });
 
+router.get('/probate/executorsnotapplying', function(req,res) {
+  if (!req.session.form) {req.session.form = {};};
+  res.render('probate/executorsnotapplying', {'form': req.session.form});
+});
+
 router.post('/probate/applicant', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
   req.session.form.applicant = req.body;
@@ -60,12 +65,10 @@ router.post('/probate/will', function (req,res){
   if (!req.session.form) {req.session.form = {};};
   req.session.form.will = req.body;
   if(req.body.radio_will_group == 'No'){
-  res.render('probate/stop',{'reason' : messages.stop_no_will});
-}
-else {
-	res.render('probate/executors', {'form': req.session.form});
-}
-
+    res.render('probate/stop',{'reason' : messages.stop_no_will});
+  } else {
+	  res.render('probate/executors', {'form': req.session.form});
+  }
 });
 
 router.post('/probate/executors', function(req,res) {
@@ -74,8 +77,14 @@ router.post('/probate/executors', function(req,res) {
   if (req.body.addexecutor) {
     res.render('probate/executors', {'form': req.session.form});
   } else {
-    res.render('probate/iht', {'form': req.session.form});
+    res.render('probate/executorsnotapplying', {'form': req.session.form});
   }
+});
+
+router.post('/probate/executorsnotapplying', function(req,res) {
+  if (!req.session.form) {req.session.form = {};};
+  req.session.form.executorsnotapplying = req.body;
+  res.render('probate/iht', {'form': req.session.form});
 });
 
 router.post('/probate/iht', function(req,res) {
