@@ -11,7 +11,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 router.get('/', function (req, res) {
   res.render('index');
 });
-
+router.get('/probate/applicant', function(req,res) {
+  if (!req.session.form) {req.session.form = {};};
+  res.render('probate/applicant', {'form': req.session.form});
+});
 router.get('/probate/nameanddate', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
   res.render('probate/nameanddate', {'form': req.session.form});
