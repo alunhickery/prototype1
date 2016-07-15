@@ -15,6 +15,14 @@
   <table class="check-your-answers">
     <tbody>
       <tr>
+        <th colspan="3"><h2 class="heading-medium">The applicant</h2></th>
+      </tr>
+      <tr>
+        <td>Full Name</td>
+        <td>{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}</td>
+        <td class="change-answer"><a href="/probate/applicant">Change <span class="visuallyhidden">Full Name</span></a></td>
+      </tr>
+      <tr>
         <th colspan="3"><h2 class="heading-medium">The person who has died</h2></th>
       </tr>
       <tr>
@@ -66,13 +74,8 @@
         <th colspan="3"><h2 class="heading-medium">The Executors</h2></th>
       </tr>
       <tr>
-        <td>Are you an executor/applicant?</td>
-        <td>{{form.executors.radio_executor_group}}</td>
-        <td class="change-answer"><a href="/probate/executors">Change</a></td>
-      </tr>
-      <tr>
         <td>Executor 1</td>
-        <td>{{form.applicant_firstname}} {{form.applicant_lastname}}</td>
+        <td>{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}</td>
         <td class="change-answer"><a href="/probate/executors">Change</a></td>
       </tr>
       <tr>

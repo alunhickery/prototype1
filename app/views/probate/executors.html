@@ -39,7 +39,15 @@
 			<label class="form-label-bold" for="executor_lastname">Last name</label>
 			<input type="text" class="form-control" id="executor_lastname" name="executor_lastname" value="{{form.executors.executor_lastname}}">
 		</div>
-	{% if not form.executors.executor_firstname %}
+		{% if form.executors.addexecutor and not form.executors.executor_firstname %}
+		<div class="form-group">
+    		<label class="link">
+    			<input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
+   	 			Add Executor
+    		</label>
+    	</div>
+    {% endif %}	
+	{% if not (form.executors.executor_firstname or form.executors.addexecutor ) %}
 		<div class="form-group">
     		<label class="link">
     			<input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
