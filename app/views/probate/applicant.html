@@ -7,40 +7,40 @@
 {% block content %}
 <main id="content" role="main">
   {% include "probate/includes/breadcrumb_probate.html" %}
-	<form action="/probate/nameanddate" method="post" class="form">
+	<form action="/probate/applicant" method="post" class="form">
 		<h1 class="form-title heading-large">{{messages.applicant_header}}</h1>
 		<!-- Applicant details -->
 		<div class="form-group">
 			<!-- First Name -->
 			<label class="form-label-bold" for="input-applicant-firstname">{{messages.applicant_firstname_question}}</label>
-			<input type="text" class="form-control" id="input-applicant-firstname" name="applicant_firstname" value="{{form.applicant_firstname}}">
+			<input type="text" class="form-control" id="input-applicant-firstname" name="applicant_firstname" value="{{form.applicant.applicant_firstname}}">
 		</div>	
 		<div class="form-group">
 			<!-- First Name -->
 			<label class="form-label-bold" for="input-applicant-lastname">{{messages.applicant_lastname_question}}</label>
-			<input type="text" class="form-control" id="input-applicant-firstname" name="applicant_lastname" value="{{form.applicant_lastname}}">
+			<input type="text" class="form-control" id="input-applicant-firstname" name="applicant_lastname" value="{{form.applicant.applicant_lastname}}">
 		</div>	
 
 		</div>	
 		<div class="form-group">
 			<!-- home phone number -->
 			<label class="form-label-bold" for="input-applicant-home-phone-number">{{messages.applicant_home_phone_number_question}}</label>
-			<input type="text" class="form-control" id="input-applicant-homep-hone-number" name="home_phone_number" value="{{form.applicant_home_phone_number}}">
+			<input type="text" class="form-control" id="input-applicant-homep-hone-number" name="applicant_home_phone_number" value="{{form.applicant.applicant_home_phone_number}}">
 		</div>
 		<div class="form-group">
 			<!-- home phone number -->
 			<label class="form-label-bold" for="input-applicant-mobilework-phone-number">{{messages.applicant_mobilework_phone_number_question}}</label>
-			<input type="text" class="form-control" id="input-applicant-homep-hone-number" name="mobilework_phone_number" value="{{form.applicant_mobilework_phone_number}}">
+			<input type="text" class="form-control" id="input-applicant-homep-hone-number" name="mobilework_phone_number" value="{{form.applicant.applicant_mobilework_phone_number}}">
 		</div>		
 		<div class="form-group">
 			<!-- Email address -->
 			<label class="form-label-bold" for="input-deceased-full-name">{{messages.applicant_email_address_question}}</label>
-			<input type="text" class="form-control" id="input-email_address" name="email_address" value="{{form.applicant_email_address}}">
+			<input type="text" class="form-control" id="input-email_address" name="email_address" value="{{form.applicant.applicant_email_address}}">
 		</div>	
 		<div class="form-group">
 			<!-- Relationship to the deceased -->
 			<label class="form-label-bold" for="input-deceased-full-name">{{messages.applicant_relationship_deceased}}</label>
-			<input type="text" class="form-control" id="input-relationship_deceased" name="relatinoship_deceased" value="{{form.applicant_relationship_deceased}}">
+			<input type="text" class="form-control" id="input-relationship_deceased" name="relatinoship_deceased" value="{{form.applicant.applicant_relationship_deceased}}">
 		</div>	
 		<div class="form-group">
 			<!-- Are you an exector> -->
