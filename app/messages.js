@@ -18,6 +18,8 @@ module.exports = {
   nameanddate_header: 'About the person who died',
   nameanddate_question_1:'What was their full name?',
   nameanddate_question_hint_1: 'As shown on their death certificate.',
+  nameanddate_question_firstname:'First name',
+  nameanddate_question_lastname:'Last name',
   nameanddate_stop_1: 'You need the death certificate to complete this application.',
   nameanddate_question_2: 'Was the person who died known by another name?',
   nameanddate_question_hint_2: 'A nickname, maiden name or title.',
@@ -71,6 +73,12 @@ module.exports = {
   executors_question_1: 'Please list all of the Executors named on the Will',
   executors_link_add_executor: 'Add another Executor named on the Will',
 
+  executorsnotapplying_question_listall: 'Please list any executors who are not making this application with you an explain why',
+  executorsnotapplying_radio_diedbefore: 'They died before the deceased person',
+  executorsnotapplying_radio_diedafter: 'They died after the deceased person',
+  executorsnotapplying_radio_reserved: 'Power reserved',
+  executorsnotapplying_radio_renunciation: 'Renunciation',
+  executorsnotapplying_radio_attorney: 'Power of Attorney',
 
   executors_title: 'The Executors',
   summary_title: 'Summary',

@@ -1,3 +1,4 @@
+
 {% extends "layout.html" %}
 
 {% block page_title %}
@@ -9,38 +10,54 @@
   <form action="/probate/executorsnotapplying" method="post" class="form">
   <h1 class="form-title heading-large"></h1>
     <div class="form-group">
-	   <legend class="form-label-bold">Please list any executors who are not making this application with you an explain why</legend>
+	   <legend class="form-label-bold">{{messages.executorsnotapplying_question_listall}}</legend>
          <fieldset>
-           <label for="radio-executor-1" class="block-label">
-             <input id="radio-executor-1" type="radio" name="radio-executors-group" value="bachelor" disabled="disabled">
-             <span class="heading-small">{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}</span><br>
+           <label for="checkbox-executor-1" class="block-label">
+           {% set executor1_fullname = form.applicant.applicant_firstname +' '+ form.applicant.applicant_lastname %}
+             <input id="checkbox-executor-1" type="checkbox" name="checkbox_executors_notapplying_group" 
+             		value="{{executor1_fullname}}" disabled="disabled">
+             <span class="heading-small">{{executor1_fullname}}</span><br>
            </label>
-		<label for="radio-executor-2" class="block-label" data-target="executors-details">
-             <input id="radio-executor-2" type="radio" name="radio-executors-group" value="separated">
-             <span class="heading-small">{{form.executors.executor_firstname}} {{form.executors.executor_lastname}}</span><br>
+        {% set executor2_fullname = form.executors.executor_firstname +' '+ form.executors.executor_lastname %}
+	    {% set non_applying_executors = form.executorsnotapplying.checkbox_executors_notapplying_group %}
+		<label for="checkbox-executor-2" class="block-label" data-target="executors-details">
+             <input id="checkbox-executor-2" type="checkbox" name="checkbox_executors_notapplying_group" value="{{executor2_fullname}}"
+             		{{ "checked=checked" if non_applying_executors ==executor2_fullname or non_applying_executors[0] ==executor2_fullname }}>
+             <span class="heading-small">{{executor2_fullname}}</span><br>
            </label>
 	       <div class="panel panel-border-narrow js-hidden" id="executors-details">
 			  <div class="form-group">
+			  	{% set notApplyingReason = form.executorsnotapplying.radio_executor_notapplying_reason_group %}
   			     <fieldset>
 					<label for="radio-executor-died-before" class="block-label">
-						<input id="radio-executor-died-before" type="radio" name="radio-executor-2-group" value="bachelor">
-						<span class="heading-small">They died before the deceased person</span><br>
+						<input id="radio-executor-died-before" type="radio" name="radio_executor_notapplying_reason_group" 
+						value="{{messages.executorsnotapplying_radio_diedbefore}}"
+						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_diedbefore }}>
+						<span class="heading-small">{{messages.executorsnotapplying_radio_diedbefore}}</span><br>
 					</label>
 					<label for="radio-executor-died-after" class="block-label">
-						<input id="radio-executor-died-after" type="radio" name="radio-executor-2-group" value="widow">
-						<span class="heading-small">They died after the deceased person</span><br>
+						<input id="radio-executor-died-after" type="radio" name="radio_executor_notapplying_reason_group" 
+						value="{{messages.executorsnotapplying_radio_diedafter}}"
+						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_diedafter }}>
+						<span class="heading-small">{{messages.executorsnotapplying_radio_diedafter}}</span><br>
 					</label>
 					<label for="radio-executor-reserved" class="block-label">
-						<input id="radio-executor-reserved" type="radio" name="radio-executor-2-group" value="separated">
-						<span class="heading-small">Power reserved</span><br>
+						<input id="radio-executor-reserved" type="radio" name="radio_executor_notapplying_reason_group" 
+						value="{{messages.executorsnotapplying_radio_reserved}}"
+						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_reserved }}>
+						<span class="heading-small">{{messages.executorsnotapplying_radio_reserved}}</span><br>
 					</label>
 					<label for="radio-executor-renunciation" class="block-label">
-						<input id="radio-executor-renunciation" type="radio" name="radio-executor-2-group" value="bachelor">
-						<span class="heading-small">Renunciation</span><br>
+						<input id="radio-executor-renunciation" type="radio" name="radio_executor_notapplying_reason_group" 
+						value="{{messages.executorsnotapplying_radio_renunciation}}"
+						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_renunciation }}>
+						<span class="heading-small">{{messages.executorsnotapplying_radio_renunciation}}</span><br>
 					</label>
 					<label for="radio-executor-attorney" class="block-label">
-						<input id="radio-executor-attorney" type="radio" name="radio-executor-2-group" value="bachelor">
-						<span class="heading-small">Power of Attorney</span><br>
+						<input id="radio-executor-attorney" type="radio" name="radio_executor_notapplying_reason_group" 
+						value="{{messages.executorsnotapplying_radio_attorney}}"
+						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_attorney }}>
+						<span class="heading-small">{{messages.executorsnotapplying_radio_attorney}}</span><br>
 					</label>
 				  </fieldset>
 			  </div>

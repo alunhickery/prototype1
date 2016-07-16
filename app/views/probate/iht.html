@@ -13,10 +13,12 @@
       <fieldset class="inline">
 			<legend class="visuallyhidden">{{messages.iht_question_1}}</legend>
 			<label class="block-label" for="radio_iht_yes" data-target="iht_details">
-				<input id="radio_iht_yes" type="radio" name="radio_iht_group" value="Yes">Yes
+				<input id="radio_iht_yes" type="radio" name="radio_iht_group" value="Yes"
+						{{ "checked='checked'" if form.iht.radio_iht_group =="Yes" }}>Yes
 			</label>
 			<label class="block-label" for="radio_iht_no">
-				<input id="radio-radio_iht_no-no" type="radio" name="radio_iht_group" value="No">No
+				<input id="radio-radio_iht_no-no" type="radio" name="radio_iht_group" value="No"
+						{{ "checked='checked'" if form.iht.radio_iht_group =="No" }}>No
 			</label>
 			<div class="panel panel-border-narrow js-hidden" id="iht_details">
 				<div class="form-group">

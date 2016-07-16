@@ -15,10 +15,12 @@
       <fieldset class="inline">
 			<legend class="visuallyhidden">{{messages.will_question_1}}</legend>
 			<label class="block-label" for="radio-will-yes" data-target="will-details">
-				<input id="radio-will-yes" type="radio" name="radio_will_group" value="Yes">Yes
+				<input id="radio-will-yes" type="radio" name="radio_will_group" value="Yes"
+						{{ "checked='checked'" if form.will.radio_will_group =="Yes" }}>Yes
 			</label>
 			<label class="block-label" for="radio-will-no">
-				<input id="radio-will-no" type="radio" name="radio_will_group" value="No">No
+				<input id="radio-will-no" type="radio" name="radio_will_group" value="No"
+						{{ "checked='checked'" if form.will.radio_will_group =="No" }}>No
 			</label>
 		</fieldset>
     </div>
@@ -28,30 +30,35 @@
     	  <fieldset class="inline">
 				<legend class="visuallyhidden">{{messages.will_question_2}}</legend>
 				<label class="block-label" for="radio-will-original-yes">
-					<input id="radio-will-original-yes" type="radio" name="radio_will_original_group" value="Yes">Yes
+					<input id="radio-will-original-yes" type="radio" name="radio_will_original_group" value="Yes"
+							{{ "checked='checked'" if form.will.radio_will_original_group =="Yes" }}>Yes
 				</label>
 				<label class="block-label" for="radio-will-original-no">
-					<input id="radio-will-original-no" type="radio" name="radio_will_original_group" value="No">No
+					<input id="radio-will-original-no" type="radio" name="radio_will_original_group" value="No"
+							{{ "checked='checked'" if form.will.radio_will_original_group =="No" }}>No
 				</label>
 			</fieldset>
     	</div>
-		<!-- Date of birth -->
+		<!-- Date of the will -->
 		<div class="form-group">
 			<fieldset>
-				<label class="form-label-bold" for="codicil-day">{{messages.will_question_3}}</label>
+				<label class="form-label-bold" for="will-day">{{messages.will_question_3}}</label>
 				<p class="form-hint">{{messages.will_question_hint_3}}</p>
 				<div class="form-date">
 					<div class="form-group form-group-day">
-						<label for="codicil-day">Day</label>
-						<input class="form-control" id="codicil-day" type="number" pattern="[0-9]*" min="0" max="31">
+						<label for="will-day">Day</label>
+						<input class="form-control" id="will-day" type="number" pattern="[0-9]*" min="0" max="31"
+								name="will_day" value="{{form.will.will_day}}">
 					</div>
 					<div class="form-group form-group-month">
-						<label for="codicil-month">Month</label>
-						<input class="form-control" id="codicil-month" type="number" pattern="[0-9]*" min="0" max="12">
+						<label for="will-month">Month</label>
+						<input class="form-control" id="will-month" type="number" pattern="[0-9]*" min="0" max="12"
+								name="will_month" value="{{form.will.will_month}}">
 					</div>
 					<div class="form-group form-group-year">
-						<label for="codicil-year">Year</label>
-						<input class="form-control" id="codicil-year" type="number" pattern="[0-9]*" min="0" max="2016">
+						<label for="will-year">Year</label>
+						<input class="form-control" id="will-year" type="number" pattern="[0-9]*" min="0" max="2016"
+								name="will_year" value="{{form.will.will_year}}">
 					</div>
 				</div>
 			</fieldset>
@@ -63,10 +70,12 @@
       <fieldset class="inline">
 			<legend class="visuallyhidden">{{messages.will_question_4}}</legend>
 			<label class="block-label" for="radio-will-address-yes">
-				<input id="radio-will-address-yes" type="radio" name="radio_will_address_group" value="Yes">Yes
+				<input id="radio-will-address-yes" type="radio" name="radio_will_address_group" value="Yes"
+						{{ "checked='checked'" if form.will.radio_will_address_group =="Yes" }}>Yes
 			</label>
 			<label class="block-label" for="radio-will-address-no">
-				<input id="radio-will-address-no" type="radio" name="radio_will_address_group" value="No">No
+				<input id="radio-will-address-no" type="radio" name="radio_will_address_group" value="No"
+						{{ "checked='checked'" if form.will.radio_will_address_group =="No" }}>No
 			</label>
 		</fieldset>
     </div>
@@ -76,10 +85,12 @@
       <fieldset class="inline">
 			<legend class="visuallyhidden">{{messages.will_question_5}}</legend>
 			<label class="block-label" for="radio-codicil-yes">
-				<input id="radio-codicil-yes" type="radio" name="radio_codicil_group" value="Yes">Yes
+				<input id="radio-codicil-yes" type="radio" name="radio_codicil_group" value="Yes"
+						{{ "checked='checked'" if form.will.radio_codicil_group =="Yes" }}>Yes
 			</label>
 			<label class="block-label" for="radio-codicil-no">
-				<input id="radio-codicil-no" type="radio" name="radio_codicil_group" value="No">No
+				<input id="radio-codicil-no" type="radio" name="radio_codicil_group" value="No"
+						{{ "checked='checked'" if form.will.radio_codicil_group =="No" }}>No
 			</label>
 			<div class="panel panel-border-narrow js-hidden" id="codicil-details">
 

@@ -17,10 +17,12 @@
       <fieldset class="inline">
 			<legend class="visuallyhidden">{{address_question_1}}</legend>
 			<label class="block-label" for="radio-address-england-yes">
-				<input id="radio-address-england-yes" type="radio" name="radio_address_england_group" value="Yes">Yes
+				<input id="radio-address-england-yes" type="radio" name="radio_address_england_group" value="Yes"
+                {{ "checked='checked'" if form.address.radio_address_england_group =="Yes" }}>Yes
 			</label>
 			<label class="block-label" for="radio-address-england-no">
-				<input id="radio-address-england-no" type="radio" name="radio_address_england_group" value="No">No
+				<input id="radio-address-england-no" type="radio" name="radio_address_england_group" value="No"
+                {{ "checked='checked'" if form.address.radio_address_england_group =="No" }}>No
 			</label>
 		</fieldset>
     </div>
@@ -37,7 +39,7 @@
     </div>
     <div class="form-group">
         <label for="last-address">Select address</label>
-        <select id="last-address" class="form-control form-control-1-3" name="last_address">
+        <select id="last-address" class="form-control form-control-1-3" name="deceased_last_address">
           <option>Buckingham palace road</option>
           <option>Petty France</option>
         </select>

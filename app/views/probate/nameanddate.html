@@ -13,12 +13,12 @@
 			<!-- First Name -->
 			<legend class="form-label-bold">{{messages.nameanddate_question_1}}</legend>
 			<p class="form-hint">{{messages.nameanddate_question_hint_1}}</p>
-			<label class="form-label-bold" for="deceased_firstname">Firstname</label>
+			<label class="form-label-bold" for="deceased_firstname">{{messages.nameanddate_question_firstname}}</label>
 			<input type="text" class="form-control" id="deceased_firstname" name="deceased_firstname" value="{{form.nameanddate.deceased_firstname}}">
 		</div>	
 		<div class="form-group">
 			<!-- Last Name -->
-			<label class="form-label-bold" for="deceased_lastname">Last name</label>
+			<label class="form-label-bold" for="deceased_lastname">{{messages.nameanddate_question_lastname}}</label>
 			<input type="text" class="form-control" id="deceased_lastname" name="deceased_lastname" value="{{form.nameanddate.deceased_lastname}}">
 		</div>	
 		<div class="form-group">
@@ -27,30 +27,35 @@
 			<fieldset class="inline">
 				<legend class="visuallyhidden">{{messages.nameanddate_question_2}}</legend>
 				<label class="block-label" for="radio-other-names-yes">
-					<input id="radio-other-names-yes" type="radio" name="radio_other_names_group" value="Yes">Yes
+					<input id="radio-other-names-yes" type="radio" name="radio_other_names_group" 
+							{{ "checked='checked'" if form.nameanddate.radio_other_names_group =="Yes" }} value="Yes">Yes
 				</label>
 				<label class="block-label" for="radio-other-names-no">
-					<input id="radio-other-names-no" type="radio" name="radio_other_names_group" value="No">No
+					<input id="radio-other-names-no" type="radio" name="radio_other_names_group" 
+							{{ "checked='checked'" if form.nameanddate.radio_other_names_group =="No" }} value="No">No
 				</label>
 			</fieldset>
 		</div>
 		<!-- Date of birth -->
 		<div class="form-group">
 			<fieldset>
-				<label class="form-label-bold" for="codicil-day">{{messages.nameanddate_question_3}}</label>
+				<label class="form-label-bold" for="dob-day">{{messages.nameanddate_question_3}}</label>
 				<p class="form-hint">{{messages.nameanddate_question_hint_3}}</p>
 				<div class="form-date">
 					<div class="form-group form-group-day">
-						<label for="codicil-day">Day</label>
-						<input class="form-control" id="codicil-day" type="number" pattern="[0-9]*" min="0" max="31">
+						<label for="dob-day">Day</label>
+						<input class="form-control" id="dob-day" type="number" pattern="[0-9]*" min="0" max="31"
+								 name="deceased_dob_day" value="{{form.nameanddate.deceased_dob_day}}">
 					</div>
 					<div class="form-group form-group-month">
-						<label for="codicil-month">Month</label>
-						<input class="form-control" id="codicil-month" type="number" pattern="[0-9]*" min="0" max="12">
+						<label for="dob-month">Month</label>
+						<input class="form-control" id="dob-month" type="number" pattern="[0-9]*" min="0" max="12"
+								name="deceased_dob_month" value="{{form.nameanddate.deceased_dob_month}}">
 					</div>
 					<div class="form-group form-group-year">
-						<label for="codicil-year">Year</label>
-						<input class="form-control" id="codicil-year" type="number" pattern="[0-9]*" min="0" max="2016">
+						<label for="dob-year">Year</label>
+						<input class="form-control" id="dob-year" type="number" pattern="[0-9]*" min="0" max="1998"
+								 name="deceased_dob_year" value="{{form.nameanddate.deceased_dob_year}}">
 					</div>
 				</div>
 			</fieldset>
@@ -58,20 +63,23 @@
 		<!-- Date of death -->
 		<div class="form-group">
 			<fieldset>
-				<label class="form-label-bold" for="codicil-day">{{messages.nameanddate_question_4}}</label>
+				<label class="form-label-bold" for="death-day">{{messages.nameanddate_question_4}}</label>
 				<p class="form-hint">{{messages.nameanddate_question_hint_4}}</p>
 				<div class="form-date">
 					<div class="form-group form-group-day">
-						<label for="codicil-day">Day</label>
-						<input class="form-control" id="codicil-day" type="number" pattern="[0-9]*" min="0" max="31">
+						<label for="death-day">Day</label>
+						<input class="form-control" id="death-day" type="number" pattern="[0-9]*" min="0" max="31"
+								name="deceased_death_day" value="{{form.nameanddate.deceased_death_day}}">
 					</div>
 					<div class="form-group form-group-month">
-						<label for="codicil-month">Month</label>
-						<input class="form-control" id="codicil-month" type="number" pattern="[0-9]*" min="0" max="12">
+						<label for="death-month">Month</label>
+						<input class="form-control" id="death-month" type="number" pattern="[0-9]*" min="0" max="12"
+								name="deceased_death_month" value="{{form.nameanddate.deceased_death_month}}">
 					</div>
 					<div class="form-group form-group-year">
-						<label for="codicil-year">Year</label>
-						<input class="form-control" id="codicil-year" type="number" pattern="[0-9]*" min="0" max="2016">
+						<label for="death-year">Year</label>
+						<input class="form-control" id="death-year" type="number" pattern="[0-9]*" min="0" max="2016"
+								name="deceased_death_year" value="{{form.nameanddate.deceased_death_year}}">
 					</div>
 				</div>
 			</fieldset>

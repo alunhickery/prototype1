@@ -27,19 +27,20 @@
 			<input type="text" class="form-control" id="input-applicant-homep-hone-number" name="applicant_home_phone_number" value="{{form.applicant.applicant_home_phone_number}}">
 		</div>
 		<div class="form-group">
-			<!-- home phone number -->
+			<!-- mobile phone number -->
 			<label class="form-label-bold" for="input-applicant-mobilework-phone-number">{{messages.applicant_mobilework_phone_number_question}}</label>
-			<input type="text" class="form-control" id="input-applicant-homep-hone-number" name="mobilework_phone_number" value="{{form.applicant.applicant_mobilework_phone_number}}">
+			<input type="text" class="form-control" id="input-applicant-homep-hone-number" name="applicant_mobilework_phone_number" value="{{form.applicant.applicant_mobilework_phone_number}}">
 		</div>		
 		<div class="form-group">
 			<!-- Email address -->
 			<label class="form-label-bold" for="input-deceased-full-name">{{messages.applicant_email_address_question}}</label>
-			<input type="text" class="form-control" id="input-email_address" name="email_address" value="{{form.applicant.applicant_email_address}}">
+			<input type="text" class="form-control" id="input-email_address" name="applicant_email_address" value="{{form.applicant.applicant_email_address}}">
 		</div>	
 		<div class="form-group">
 			<!-- Relationship to the deceased -->
 			<label class="form-label-bold" for="input-deceased-full-name">{{messages.applicant_relationship_deceased}}</label>
-			<input type="text" class="form-control" id="input-relationship_deceased" name="relatinoship_deceased" value="{{form.applicant.applicant_relationship_deceased}}">
+			<input type="text" class="form-control" id="input-relationship_deceased" name="applicant_relationship_deceased" 
+					value="{{form.applicant.applicant_relationship_deceased}}">
 		</div>	
 		<div class="form-group">
 			<!-- Are you an exector> -->
@@ -48,10 +49,12 @@
 			<fieldset class="inline">
 				<legend class="visuallyhidden">{{messages.applicant_executor_question}}</legend>
 				<label class="block-label" for="radio-executor-yes">
-					<input id="radio-executor-yes" type="radio" name="radio_executor_group" value="Yes">Yes
+					<input id="radio-executor-yes" type="radio" name="radio_applicant_executor_group" value="Yes" 
+							{{ "checked='checked'" if form.applicant.radio_applicant_executor_group =="Yes" }}>Yes
 				</label>
 				<label class="block-label" for="radio-other-names-no">
-					<input id="radio-executor-no" type="radio" name="radio_executor_group" value="No">No
+					<input id="radio-executor-no" type="radio" name="radio_applicant_executor_group" value="No" 
+							{{ "checked='checked'" if form.applicant.radio_applicant_executor_group == "No" }}>No
 				</label>
 			</fieldset>
 		</div>
