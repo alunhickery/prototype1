@@ -104,9 +104,11 @@
       </tr>
       <tr>
         <td>Executor 1<br>
-            Executor 2</td>
+            {% for executor in form.executors %}Executor {{loop.index +1}}<br>{% endfor %}</td>
         <td>{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}<br>
-                        {{form.executors.executor_firstname}} {{form.executors.executor_lastname}}</td>
+            {% for executor in form.executors %}
+              {{executor.executor_firstname}} {{executor.executor_lastname}}<br>
+            {% endfor %}</td>
         <td class="change-answer"><a href="/probate/executors">Change 
           <span class="visuallyhidden">change executor details</span></a>
         </td>
@@ -114,17 +116,17 @@
       <tr>
         <th colspan="3"><span>Executors not applying</span></th>
       </tr>
-    {% set executor2_fullname = form.executors.executor_firstname +' '+ form.executors.executor_lastname %}
-    {% set non_applying_executors = form.executorsnotapplying.checkbox_executors_notapplying_group %}
-    {% if non_applying_executors ==executor2_fullname or non_applying_executors[0] ==executor2_fullname  %}
       <tr>
-        <td>{{executor2_fullname}}</td>
-        <td>{{form.executorsnotapplying.radio_executor_notapplying_reason_group}}</td>
+        <td>{% for executor in form.executors %}{% if executor.executor_notapplying %}
+              {{executor.executor_notapplying}}<br>
+            {% endif %}{% endfor %}</td>
+        <td>{% for executor in form.executors %}{% if executor.executor_notapplying %}
+              {{executor.executor_notapplying_reason}}<br>
+            {% endif %}{% endfor %}</td>
         <td class="change-answer"><a href="/probate/executorsnotapplying">Change 
           <span class="visuallyhidden">change non applying executors details</span></a>
         </td>
       </tr>
-    {% endif %}
       <!-- iht -->
       <tr>
         <th colspan="3"><span class="heading-medium">Inheritance tax</span></th>

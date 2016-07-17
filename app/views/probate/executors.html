@@ -16,37 +16,40 @@
       		  <td colspan="2">Executor 1</td>
       		  <td colspan="2">{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}</td>
       		</tr>
-      	{% if form.executors.executor_lastname %}
+        {% for executor in form.executors %}
       		<tr>
-      		  <td colspan="2">Executor 2</td>
-      		  <td colspan="2">{{form.executors.executor_firstname}} {{form.executors.executor_lastname}}</td>
+      		  <td colspan="2">Executor {{loop.index +1}}</td>
+      		  <td colspan="2">{{executor.executor_firstname}} {{executor.executor_lastname}}</td>
       		</tr>
-		{% endif %}
+		    {% endfor %}
       	</tbody>
        </table>
     </div>
-    	<div class="form-group {{'' if form.executors.addexecutor and not form.executors.executor_firstname else 'visuallyhidden'}}">
+    {% if form.form_action == "add_another_executor" %}
+    	<div class="form-group">
 			<!-- First Name -->
 			<label class="form-label-bold" for="executor_firstname">Firstname</label>
 			<input type="text" class="form-control" id="executor_firstname" name="executor_firstname" value="{{form.executors.executor_firstname}}">
-		</div>	
-    	<div class="form-group {{'' if form.executors.addexecutor and not form.executors.executor_firstname else 'visuallyhidden'}}">
-			<!-- Last Name -->
-			<label class="form-label-bold" for="executor_lastname">Last name</label>
-			<input type="text" class="form-control" id="executor_lastname" name="executor_lastname" value="{{form.executors.executor_lastname}}">
 		</div>
-		{% if form.executors.addexecutor and not form.executors.executor_firstname %}
-		<div class="form-group">
-    		<label class="link">
-    			<input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
-   	 			Add Executor
-    		</label>
-    	</div>
+    <fieldset class="inline">
+      <div class="form-group">
+      <!-- Last Name -->
+      <label class="form-label-bold" for="executor_lastname">Last name</label>
+      <input type="text" class="form-control" id="executor_lastname" name="executor_lastname" value="{{form.executors.executor_lastname}}">
+    </div>
+    <div class="form-group">
+        <label class="link">
+          <input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
+          Add Executor
+        </label>
+      </div>
+    </fieldset>	
+    
     {% endif %}	
-	{% if not (form.executors.executor_firstname or form.executors.addexecutor ) %}
+	{% if not (form.executors.length >= 3 or form.form_action == "add_another_executor") %}
 		<div class="form-group">
     		<label class="link">
-    			<input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
+    			<input class="visuallyhidden" type="submit" name="add_another_executor" value="add_another_executor">
    	 			{{messages.executors_link_add_executor}}
     		</label>
     	</div>

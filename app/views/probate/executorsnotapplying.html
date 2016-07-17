@@ -18,43 +18,46 @@
              		value="{{executor1_fullname}}" disabled="disabled">
              <span class="heading-small">{{executor1_fullname}}</span><br>
            </label>
-        {% set executor2_fullname = form.executors.executor_firstname +' '+ form.executors.executor_lastname %}
-	    {% set non_applying_executors = form.executorsnotapplying.checkbox_executors_notapplying_group %}
-		<label for="checkbox-executor-2" class="block-label" data-target="executors-details">
-             <input id="checkbox-executor-2" type="checkbox" name="checkbox_executors_notapplying_group" value="{{executor2_fullname}}"
-             		{{ "checked=checked" if non_applying_executors ==executor2_fullname or non_applying_executors[0] ==executor2_fullname }}>
-             <span class="heading-small">{{executor2_fullname}}</span><br>
+           {% for executor in form.executors %}
+        {% set executor_fullname = executor.executor_firstname +' '+ executor.executor_lastname %}
+		<label for="checkbox-executor-{{loop.index +1}}" class="block-label" data-target="executors{{loop.index +1}}-details">
+             <input id="checkbox-executor-{{loop.index +1}}" type="checkbox" name="executors[{{loop.index}}][executor_notapplying]" 
+             		value="{{executor_fullname}}"
+             		{{ "checked=checked" if executor.executor_notapplying }}>
+             <span class="heading-small">{{executor_fullname}}</span><br>
            </label>
-	       <div class="panel panel-border-narrow js-hidden" id="executors-details">
+           <input type="hidden" name="executors[{{loop.index}}][executor_firstname]" value="{{executor.executor_firstname}}">
+           <input type="hidden" name="executors[{{loop.index}}][executor_lastname]" value="{{executor.executor_lastname}}">
+	       <div class="panel panel-border-narrow js-hidden" id="executors{{loop.index +1}}-details">
 			  <div class="form-group">
-			  	{% set notApplyingReason = form.executorsnotapplying.radio_executor_notapplying_reason_group %}
+			  	{% set notApplyingReason = executor.executor_notapplying_reason %}
   			     <fieldset>
 					<label for="radio-executor-died-before" class="block-label">
-						<input id="radio-executor-died-before" type="radio" name="radio_executor_notapplying_reason_group" 
+						<input id="radio-executor-died-before" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_diedbefore}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_diedbefore }}>
 						<span class="heading-small">{{messages.executorsnotapplying_radio_diedbefore}}</span><br>
 					</label>
 					<label for="radio-executor-died-after" class="block-label">
-						<input id="radio-executor-died-after" type="radio" name="radio_executor_notapplying_reason_group" 
+						<input id="radio-executor-died-after" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_diedafter}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_diedafter }}>
 						<span class="heading-small">{{messages.executorsnotapplying_radio_diedafter}}</span><br>
 					</label>
 					<label for="radio-executor-reserved" class="block-label">
-						<input id="radio-executor-reserved" type="radio" name="radio_executor_notapplying_reason_group" 
+						<input id="radio-executor-reserved" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_reserved}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_reserved }}>
 						<span class="heading-small">{{messages.executorsnotapplying_radio_reserved}}</span><br>
 					</label>
 					<label for="radio-executor-renunciation" class="block-label">
-						<input id="radio-executor-renunciation" type="radio" name="radio_executor_notapplying_reason_group" 
+						<input id="radio-executor-renunciation" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_renunciation}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_renunciation }}>
 						<span class="heading-small">{{messages.executorsnotapplying_radio_renunciation}}</span><br>
 					</label>
 					<label for="radio-executor-attorney" class="block-label">
-						<input id="radio-executor-attorney" type="radio" name="radio_executor_notapplying_reason_group" 
+						<input id="radio-executor-attorney" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_attorney}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_attorney }}>
 						<span class="heading-small">{{messages.executorsnotapplying_radio_attorney}}</span><br>
@@ -62,6 +65,9 @@
 				  </fieldset>
 			  </div>
            </div>
+        	{% endfor %}
+
+
          </fieldset>
     </div>
 	<div class="form-group">

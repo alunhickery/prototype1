@@ -47,13 +47,25 @@ router.post('/probate/will', function (req,res){
 
 router.post('/probate/executors', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
-  req.session.form.executors = req.body;
   if (req.body.addexecutor) {
+    req.session.form.form_action = "addexecutor";
+    if (!req.session.form.executors) {req.session.form.executors = [];};
+    req.session.form.executors[req.session.form.executors.length] = req.body;
+    res.render('probate/executors', {'form': req.session.form});
+  } else if (req.body.add_another_executor) {
+    req.session.form.form_action = "add_another_executor";
     res.render('probate/executors', {'form': req.session.form});
   } else {
     res.render('probate/executorsnotapplying', {'form': req.session.form});
   }
 });
+
+router.post('/probate/executorsnotapplying', function(req,res) {
+  if (!req.session.form) {req.session.form = {};};
+  req.session.form.executors = req.body.executors;
+  res.render('probate/iht', {'form': req.session.form});
+});
+
 
 
 router.post('/probate/stop',function(req,res){
