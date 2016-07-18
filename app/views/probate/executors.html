@@ -9,7 +9,7 @@
   <form action="/probate/executors" method="post" class="form">
       <h1 class="form-title heading-large"></h1>
 	<div class="form-group">
-	   <legend class="form-label-bold">{{messages.executors_question_1}}</legend>
+	   <legend class="form-label">{{messages.executors_question_1}}</legend>
 	   <table>
     	<tbody>
       		<tr>
@@ -28,13 +28,13 @@
     {% if form.form_action == "add_another_executor" %}
     	<div class="form-group">
 			<!-- First Name -->
-			<label class="form-label-bold" for="executor_firstname">Firstname</label>
+			<label class="form-label" for="executor_firstname">Firstname</label>
 			<input type="text" class="form-control" id="executor_firstname" name="executor_firstname" value="{{form.executors.executor_firstname}}">
 		</div>
     <fieldset class="inline">
       <div class="form-group">
       <!-- Last Name -->
-      <label class="form-label-bold" for="executor_lastname">Last name</label>
+      <label class="form-label" for="executor_lastname">Last name</label>
       <input type="text" class="form-control" id="executor_lastname" name="executor_lastname" value="{{form.executors.executor_lastname}}">
     </div>
     <div class="form-group">
