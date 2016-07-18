@@ -20,7 +20,7 @@
 				<input id="radio-radio_iht_no-no" type="radio" name="radio_iht_group" value="No"
 						{{ "checked='checked'" if form.iht.radio_iht_group =="No" }}>No
 			</label>
-			<div class="panel panel-border-narrow js-hidden" id="iht_details">
+			<div class="panel panel-border-narrow {{ '' if form.iht.radio_iht_group =='Yes' else 'js-hidden' }}" id="iht_details">
 				<div class="form-group">
 					<!-- full name -->
 					<label class="form-label" for="input_iht_id">{{messages.iht_question_2}}</label>

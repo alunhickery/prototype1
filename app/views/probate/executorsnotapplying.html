@@ -28,7 +28,8 @@
            </label>
            <input type="hidden" name="executors[{{loop.index}}][executor_firstname]" value="{{executor.executor_firstname}}">
            <input type="hidden" name="executors[{{loop.index}}][executor_lastname]" value="{{executor.executor_lastname}}">
-	       <div class="panel panel-border-narrow js-hidden" id="executors{{loop.index +1}}-details">
+	       <div class="panel panel-border-narrow {{ '' if executor.executor_notapplying else 'js-hidden' }}" 
+	       		id="executors{{loop.index +1}}-details">
 			  <div class="form-group">
 			  	{% set notApplyingReason = executor.executor_notapplying_reason %}
   			     <fieldset>

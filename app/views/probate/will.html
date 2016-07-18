@@ -24,7 +24,7 @@
 			</label>
 		</fieldset>
     </div>
-    <div class="panel panel-border-narrow js-hidden" id="will-details">
+    <div class="panel panel-border-narrow {{ '' if form.will.radio_will_group =='Yes' else 'js-hidden' }}" id="will-details">
 		<div class="form-group">
 		   <legend class="form-label">{{messages.will_question_2}}</legend>
     	  <fieldset class="inline">
@@ -92,9 +92,6 @@
 				<input id="radio-codicil-no" type="radio" name="radio_codicil_group" value="No"
 						{{ "checked='checked'" if form.will.radio_codicil_group =="No" }}>No
 			</label>
-			<div class="panel panel-border-narrow js-hidden" id="codicil-details">
-
-			</div>
 		</fieldset>
     </div>
     <div class="form-group">
