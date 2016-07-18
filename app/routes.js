@@ -27,7 +27,7 @@ router.post('/probate/address', function(req,res) {
   req.session.form.address = req.body;
     console.log(req.body);
   if(req.body.radio_address_england_group == 'No'){
-    res.render('probate/stop',{'reason' : messages.stop_foreign_domicile});
+    res.render('probate/stop',{'reason' : messages.stop_foreign_domicile, 'returnpage':'address'});
   } else {
   	res.render('probate/maritalstatus', {'form': req.session.form});
   }
@@ -38,7 +38,7 @@ router.post('/probate/will', function (req,res){
   if (!req.session.form) {req.session.form = {};};
   req.session.form.will = req.body;
   if(req.body.radio_will_group == 'No'){
-    res.render('probate/stop',{'reason' : messages.stop_no_will});
+    res.render('probate/stop',{'reason' : messages.stop_no_will,'returnpage':'will'});
   } else {
 	  res.render('probate/executors', {'form': req.session.form});
   }
@@ -69,7 +69,8 @@ router.post('/probate/executorsnotapplying', function(req,res) {
 
 
 router.post('/probate/stop',function(req,res){
-  res.redirect('/probate/welcome');
+  var page_name = req.body.return_page;
+  res.redirect('/probate/'+page_name);
 });
 
 
