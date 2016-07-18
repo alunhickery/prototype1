@@ -39,7 +39,15 @@ router.post('/probate/will', function (req,res){
   req.session.form.will = req.body;
   if(req.body.radio_will_group == 'No'){
     res.render('probate/stop',{'reason' : messages.stop_no_will,'returnpage':'will'});
-  } else {
+  }else if (req.body.radio_will_original_group =='No'){
+    res.render('probate/stop',{'reason': messages.stop_no_original_will,'returnpage':'will'});
+  }else if (req.body.radio_will_address_group =='Yes'){
+    res.render('probate/stop',{'reason': messages.stop_outside_englandwales_will,'returnpage':'will'});
+  }
+  else if (req.body.radio_codicil_group =='Yes'){
+    res.render('probate/stop',{'reason': messages.stop_codicil_will,'returnpage':'will'});
+  }
+   else {
 	  res.render('probate/executors', {'form': req.session.form});
   }
 });
