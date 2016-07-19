@@ -15,17 +15,21 @@ router.get('/', function (req, res) {
 });
 
 
-router.get('/probate/:page', function(req,res) {
-  var view = req.params.page;
-  if (!req.session.form) {req.session.form = {};};
-  res.render('probate/'+ view, {'form': req.session.form});
-});
 
+
+router.post('/probate/nameanddate', function(req,res) {
+  if (!req.session.form) {req.session.form = {};};
+  req.session.form.address = req.body;
+  if(req.body.radio_other_names_group == 'Yes'){
+    res.render('probate/stop',{'reason' : messages.stop_alias, 'returnpage':'nameanddate'});
+  } else {
+    res.render('probate/address', {'form': req.session.form});
+  }
+});
 
 router.post('/probate/address', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
   req.session.form.address = req.body;
-    console.log(req.body);
   if(req.body.radio_address_england_group == 'No'){
     res.render('probate/stop',{'reason' : messages.stop_foreign_domicile, 'returnpage':'address'});
   } else {
@@ -74,7 +78,15 @@ router.post('/probate/executorsnotapplying', function(req,res) {
   res.render('probate/iht', {'form': req.session.form});
 });
 
-
+router.post('/probate/iht', function(req,res) {
+  if (!req.session.form) {req.session.form = {};};
+  req.session.form.address = req.body;
+  if(req.body.radio_iht_group == 'No'){
+    res.render('probate/stop',{'reason' : messages.stop_iht, 'returnpage':'iht'});
+  } else {
+    res.render('probate/summary', {'form': req.session.form});
+  }
+});
 
 router.post('/probate/stop',function(req,res){
   var page_name = req.body.return_page;
