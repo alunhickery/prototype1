@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block content %}
+<ul class="error-summary">
+	{% for error in errors %}
+	<li>{{ error.msg }}: {{ error.param}}</li>
+	{% endfor %}
+</ul>
 <main id="content" role="main">
 	<form action="/probate/applicant" method="post" class="form">
 		<h1 class="form-title heading-large">{{messages.applicant_header}}</h1>

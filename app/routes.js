@@ -8,7 +8,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-
+var pageList = ['welcome','applicant','nameanddate','address','maritalstatus','will','executors','executorsnotapplying','iht','summary'];
+var mandatoryFields = {'applicant':['applicant_firstname']};
 
 router.get('/', function (req, res) {
   res.render('probate/welcome');
@@ -94,20 +95,33 @@ router.post('/probate/stop',function(req,res){
 });
 
 
-router.post('/probate/:page', function(req,res) {
-  var page_name = req.params.page;
-  if (!req.session.form) {req.session.form = {};};
-  req.session.form[page_name] = req.body;
-  res.render('probate/' + getNextPage(page_name), {'form': req.session.form});
+router.post('/probate/:page', function (req, res) {
+    var page_name = req.params.page;
+    if (!req.session.form) {
+        req.session.form = {};
+    }
+    req.session.form[page_name] = req.body;
+    validateFields(req, page_name);
+    if (req.validationErrors()) {
+        res.render('probate/' + page_name, {'form': req.session.form, 'errors': req.validationErrors()});
+    }
+    else {
+        res.render('probate/' + getNextPage(page_name), {'form': req.session.form});
+    }
 });
 
 
 function getNextPage(currentPage) {
-  pageList = ['welcome','applicant','nameanddate','address','maritalstatus','will','executors','executorsnotapplying','iht','summary'];
   index = pageList.indexOf(currentPage);
   if(index >= 0 && index < pageList.length - 1)
     return pageList[index + 1];
 }
 
+function validateFields(req, currentPage) {
+  var mandatoryFieldsArray = mandatoryFields[currentPage];
+    mandatoryFieldsArray.forEach(function(s) {
+        req.checkBody(s, 'Field should not be empty').notEmpty();
+      }
+  )}
 
 module.exports = router;

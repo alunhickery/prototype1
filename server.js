@@ -13,6 +13,7 @@ var path = require('path'),
     port = (process.env.PORT || config.port),
     utils = require(__dirname + '/lib/utils.js'),
     packageJson = require(__dirname + '/package.json'),
+    expressValidator = require('express-validator'),
 
 // Grab environment variables specified in Procfile or as Heroku config vars
     releaseVersion = packageJson.version,
@@ -64,6 +65,7 @@ app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets'
 
 // Support for parsing data in POSTs
 app.use(bodyParser.json());
+app.use(expressValidator()); // this line must be immediately after express.bodyParser()!
 app.use(bodyParser.urlencoded({
   extended: true
 }));
