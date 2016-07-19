@@ -96,7 +96,7 @@ router.post('/probate/stop',function(req,res){
   res.redirect('/probate/'+page_name);
 });
 
-
+//generic POST handler
 router.post('/probate/:page', function (req, res) {
     var page_name = req.params.page;
     if (!req.session.form) {
@@ -112,6 +112,7 @@ router.post('/probate/:page', function (req, res) {
     }
 });
 
+//generic GET handler
 router.get('/probate/:page', function (req, res) {
         res.render('probate/' + req.params.page, {'form': req.session.form});
 });
