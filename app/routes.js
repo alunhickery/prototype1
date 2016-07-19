@@ -19,7 +19,7 @@ router.get('/', function (req, res) {
 
 router.post('/probate/nameanddate', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
-  req.session.form.address = req.body;
+  req.session.form.nameanddate = req.body;
   if(req.body.radio_other_names_group == 'Yes'){
     res.render('probate/stop',{'reason' : messages.stop_alias, 'returnpage':'nameanddate'});
   } else {
@@ -83,7 +83,7 @@ router.post('/probate/executorsnotapplying', function(req,res) {
 
 router.post('/probate/iht', function(req,res) {
   if (!req.session.form) {req.session.form = {};};
-  req.session.form.address = req.body;
+  req.session.form.iht = req.body;
   if(req.body.radio_iht_group == 'No'){
     res.render('probate/stop',{'reason' : messages.stop_iht, 'returnpage':'iht'});
   } else {
@@ -110,6 +110,10 @@ router.post('/probate/:page', function (req, res) {
     else {
         res.render('probate/' + getNextPage(page_name), {'form': req.session.form});
     }
+});
+
+router.get('/probate/:page', function (req, res) {
+        res.render('probate/' + req.params.page, {'form': req.session.form});
 });
 
 
