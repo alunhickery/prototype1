@@ -8,10 +8,9 @@
 <main id="content" role="main">
   <form action="/probate/will" method="post" class="form">
     <h1 class="form-title heading-large">
-      {{messages.will_header}}
+{{messages.will_question_1}}
     </h1>
 	<div class="form-group">
-	   <legend class="form-label">{{messages.will_question_1}}</legend>
       <fieldset class="inline">
 			<legend class="visuallyhidden">{{messages.will_question_1}}</legend>
 			<label class="block-label" for="radio-will-yes" data-target="will-details">
@@ -64,22 +63,7 @@
 				</div>
 			</fieldset>
 		</div>
-	</div>    
-	<div class="form-group">
-	   <legend class="form-label">{{messages.will_question_4}}</legend>
-	   <p class="form-hint">{{messages.will_question_hint_4}}</p>
-      <fieldset class="inline">
-			<legend class="visuallyhidden">{{messages.will_question_4}}</legend>
-			<label class="block-label" for="radio-will-address-yes">
-				<input id="radio-will-address-yes" type="radio" name="radio_will_address_group" value="Yes"
-						{{ "checked='checked'" if form.will.radio_will_address_group =="Yes" }}>Yes
-			</label>
-			<label class="block-label" for="radio-will-address-no">
-				<input id="radio-will-address-no" type="radio" name="radio_will_address_group" value="No"
-						{{ "checked='checked'" if form.will.radio_will_address_group =="No" }}>No
-			</label>
-		</fieldset>
-    </div>
+	</div>    	
 	<div class="form-group">
 	   <legend class="form-label">{{messages.will_question_5}}</legend>
 	   <p class="form-hint">{{messages.will_question_hint_5}}</p>
@@ -92,6 +76,20 @@
 			<label class="block-label" for="radio-codicil-no">
 				<input id="radio-codicil-no" type="radio" name="radio_codicil_group" value="No"
 						{{ "checked='checked'" if form.will.radio_codicil_group =="No" }}>No
+			</label>
+		</fieldset>
+    </div>
+    <div class="form-group">
+	   <legend class="form-label">{{messages.will_question_4}}</legend>
+      <fieldset class="inline">
+			<legend class="visuallyhidden">{{messages.will_question_4}}</legend>
+			<label class="block-label" for="radio-will-address-yes">
+				<input id="radio-will-address-yes" type="radio" name="radio_will_address_group" value="Yes"
+						{{ "checked='checked'" if form.will.radio_will_address_group =="Yes" }}>Yes
+			</label>
+			<label class="block-label" for="radio-will-address-no">
+				<input id="radio-will-address-no" type="radio" name="radio_will_address_group" value="No"
+						{{ "checked='checked'" if form.will.radio_will_address_group =="No" }}>No
 			</label>
 		</fieldset>
     </div>
