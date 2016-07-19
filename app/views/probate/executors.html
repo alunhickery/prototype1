@@ -7,44 +7,46 @@
 {% block content %}
 <main id="content" role="main">
   <form action="/probate/executors" method="post" class="form">
-      <h1 class="form-title heading-large"></h1>
-	<div class="form-group">
-	   <legend class="form-label">{{messages.executors_question_1}}</legend>
-	   <table>
-    	<tbody>
-      		<tr>
-      		  <td colspan="2">Executor 1</td>
-      		  <td colspan="2">{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}</td>
-      		</tr>
-        {% for executor in form.executors %}
-      		<tr>
-      		  <td colspan="2">Executor {{loop.index +1}}</td>
-      		  <td colspan="2">{{executor.executor_firstname}} {{executor.executor_lastname}}</td>
-      		</tr>
-		    {% endfor %}
-      	</tbody>
-       </table>
-    </div>
+      <h1 class="form-title heading-large">{{messages.executors_question_1}}</h1>
+      <div class="form-group">
+           <table>
+             <tbody>
+               <tr>
+                 <td>Executor 1</td>
+                 <td>{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}</td>
+               </tr>
+             {% for executor in form.executors %}
+               <tr>
+                 <td>Executor {{loop.index +1}}</td>
+                 <td>{{executor.executor_firstname}} {{executor.executor_lastname}}</td>
+              </tr>
+             {% endfor %}
+             </tbody>
+           </table>
+      </div>
     {% if form.form_action == "add_another_executor" %}
-    	<div class="form-group">
+    	<div class="form-group">Executor {{ form.executors.length +2 if form.executors else 2 }}</div>
+      <div class="form-group">
 			<!-- First Name -->
-			<label class="form-label" for="executor_firstname">Firstname</label>
+			<label class="form-label" for="executor_firstname">First name(s)</label>
 			<input type="text" class="form-control" id="executor_firstname" name="executor_firstname" value="{{form.executors.executor_firstname}}">
 		</div>
-    <fieldset class="inline">
       <div class="form-group">
       <!-- Last Name -->
       <label class="form-label" for="executor_lastname">Last name</label>
       <input type="text" class="form-control" id="executor_lastname" name="executor_lastname" value="{{form.executors.executor_lastname}}">
     </div>
+
     <div class="form-group">
+      <fieldset class="inline">
+        <input type="submit" class="button-secondary" name="addexecutor" value="Add">
         <label class="link">
-          <input class="visuallyhidden" type="submit" name="addexecutor" value="addexecutor">
-          Add Executor
-        </label>
-      </div>
-    </fieldset>	
-    
+          <input class="visuallyhidden" type="submit" name="cancel_executor" value="cancel_executor">
+          <span>Cancel</span>
+        </label> 
+      </fieldset>
+    </div>
+  </tr>  
     {% endif %}	
 	{% if not (form.executors.length >= 3 or form.form_action == "add_another_executor") %}
 		<div class="form-group">

@@ -65,6 +65,9 @@ router.post('/probate/executors', function(req,res) {
     if (!req.session.form.executors) {req.session.form.executors = [];};
     req.session.form.executors[req.session.form.executors.length] = req.body;
     res.render('probate/executors', {'form': req.session.form});
+  } else if (req.body.cancel_executor) {
+    req.session.form.form_action = "cancel_executor";
+    res.render('probate/executors', {'form': req.session.form});
   } else if (req.body.add_another_executor) {
     req.session.form.form_action = "add_another_executor";
     res.render('probate/executors', {'form': req.session.form});
