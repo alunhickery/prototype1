@@ -2,14 +2,13 @@ var express = require('express');
 var app = express();
 
 var messages = require('./messages.js');
+var pages = require('./pages.js');
 
 var router = express.Router();
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-var pageList = ['welcome','applicant','nameanddate','address','maritalstatus','will','executors','executorsnotapplying','iht','summary'];
-var mandatoryFields = {'applicant':['applicant_firstname']};
 
 router.get('/', function (req, res) {
   res.render('probate/welcome');
@@ -115,13 +114,13 @@ router.post('/probate/:page', function (req, res) {
 
 
 function getNextPage(currentPage) {
-  index = pageList.indexOf(currentPage);
-  if(index >= 0 && index < pageList.length - 1)
-    return pageList[index + 1];
+  index = pages.list.indexOf(currentPage);
+  if(index >= 0 && index < pages.list.length - 1)
+    return pages.list[index + 1];
 }
 
 function validateFields(req, currentPage) {
-  var mandatoryFieldsArray = mandatoryFields[currentPage];
+  var mandatoryFieldsArray = pages.mandatoryFields[currentPage];
     mandatoryFieldsArray.forEach(function(s) {
         req.checkBody(s, 'Field should not be empty').notEmpty();
       }
