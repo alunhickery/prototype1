@@ -9,6 +9,12 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+router.use(function (req, res, next) {
+  if (!req.session.form) {
+    req.session.form = {};
+  }
+  next();
+});
 
 router.get('/', function (req, res) {
   res.render('probate/welcome');
@@ -18,7 +24,6 @@ router.get('/', function (req, res) {
 
 
 router.post('/probate/nameanddate', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
   req.session.form.nameanddate = req.body;
   if(req.body.radio_other_names_group == 'Yes'){
     res.render('probate/stop',{'reason' : messages.stop_alias, 'returnpage':'nameanddate'});
@@ -28,7 +33,6 @@ router.post('/probate/nameanddate', function(req,res) {
 });
 
 router.post('/probate/address', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
   req.session.form.address = req.body;
   if(req.body.radio_address_england_group == 'No'){
     res.render('probate/stop',{'reason' : messages.stop_foreign_domicile, 'returnpage':'address'});
@@ -39,7 +43,6 @@ router.post('/probate/address', function(req,res) {
 
 
 router.post('/probate/will', function (req,res){
-  if (!req.session.form) {req.session.form = {};};
   req.session.form.will = req.body;
   if(req.body.radio_will_group == 'No'){
     res.render('probate/stop',{'reason' : messages.stop_no_will,'returnpage':'will'});
@@ -58,10 +61,9 @@ router.post('/probate/will', function (req,res){
 
 
 router.post('/probate/executors', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
   if (req.body.addexecutor) {
     req.session.form.form_action = "addexecutor";
-    if (!req.session.form.executors) {req.session.form.executors = [];};
+    if (!req.session.form.executors) {req.session.form.executors = [];}
     req.session.form.executors[req.session.form.executors.length] = req.body;
     res.render('probate/executors', {'form': req.session.form});
   } else if (req.body.cancel_executor) {
@@ -76,13 +78,11 @@ router.post('/probate/executors', function(req,res) {
 });
 
 router.post('/probate/executorsnotapplying', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
   req.session.form.executors = req.body.executors;
   res.render('probate/iht', {'form': req.session.form});
 });
 
 router.post('/probate/iht', function(req,res) {
-  if (!req.session.form) {req.session.form = {};};
   req.session.form.iht = req.body;
   if(req.body.radio_iht_group == 'No'){
     res.render('probate/stop',{'reason' : messages.stop_iht, 'returnpage':'iht'});
