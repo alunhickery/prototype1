@@ -28,7 +28,12 @@ router.post('/probate/nameanddate', function(req,res) {
   if(req.body.radio_other_names_group == 'Yes'){
     res.render('probate/stop',{'reason' : messages.stop_alias, 'returnpage':'nameanddate'});
   } else {
-    res.render('probate/dateofbirth', {'form': req.session.form});
+	validateFields(req, 'nameanddate');
+	if (req.validationErrors()) {
+	  res.render('probate/nameanddate', {'form': req.session.form, 'errors': req.validationErrors()});
+	} else {
+	  res.render('probate/dateofbirth', {'form': req.session.form});
+	}   
   }
 });
 
