@@ -1,0 +1,15 @@
+	{% if errors %}
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+  <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+    Answer this question
+  </h1>
+<!--  <p>
+    Check if any mandatory fields are missing
+  </p>
+  <ul class="error-summary-list">
+  	{% for error in errors %}
+    <li><a href="#{{ error.param}}">{{ error.msg }}</a></li>
+  	{% endfor %}
+  </ul> -->
+</div>
+{% endif %}
