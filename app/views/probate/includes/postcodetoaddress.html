@@ -3,7 +3,7 @@
           <input type="text" class="form-control form-control-1-8" id="postcode" name="postcode">
           <input type="submit" class="button-secondary" name="findaddress" value="Find UK address">
 </div>
-{% if form.findaddress %}
+{% if form.form_action == 'findaddress' %}
 	<div class="form-group">
 	  <label for="last-address">Select address</label>
 	  <select id="last-address" class="form-control form-control-1-3" name="address">
