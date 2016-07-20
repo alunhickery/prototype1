@@ -23,7 +23,7 @@ router.post('/probate/nameanddate', function(req,res) {
   if(req.body.radio_other_names_group == 'Yes'){
     res.render('probate/stop',{'reason' : messages.stop_alias, 'returnpage':'nameanddate'});
   } else {
-    res.render('probate/address', {'form': req.session.form});
+    res.render('probate/dateofbirth', {'form': req.session.form});
   }
 });
 
@@ -99,9 +99,11 @@ router.post('/probate/stop',function(req,res){
 //generic POST handler
 router.post('/probate/:page', function (req, res) {
     var page_name = req.params.page;
+    console.log('generic post page:'+page_name);
     if (!req.session.form) {
         req.session.form = {};
     }
+    console.log('>>>>>>'+req.body);
     req.session.form[page_name] = req.body;
     validateFields(req, page_name);
     if (req.validationErrors()) {
