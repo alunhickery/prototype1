@@ -120,7 +120,6 @@ router.post('/probate/applicant', function (req, res) {
           res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
       }
       else {
-        res.append('Link','/probate/nameanddate');
           res.render('probate/nameanddate', {'form': req.session.form});
       } 
     }
