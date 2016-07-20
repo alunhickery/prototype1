@@ -36,5 +36,9 @@
     "prompt": "^0.2.14",
     "readdir": "0.0.6",
     "serve-favicon": "2.3.0"
+  },
+  "devDependencies": {
+    "webdriverio": "^4.2.1",
+    "wdio-mocha-framework": "^0.3.6"
   }
 }
