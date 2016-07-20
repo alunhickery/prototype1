@@ -6,27 +6,35 @@
 
 {% block content %}
 
-{% if errors %}
-<ul class="error-summary">
-	{% for error in errors %}
-	<li>{{ error.msg }}: {{ error.param}}</li>
-	{% endfor %}
-</ul>
-{% endif %}
 <main id="content" role="main">
+	{% if errors %}
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+  <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+    There are errors on the page
+  </h1>
+  <p>
+    Check if any mandatory fields are missing
+  </p>
+  <ul class="error-summary-list">
+  	{% for error in errors %}
+    <li><a href="#{{ error.param}}">{{ error.msg }}</a></li>
+  	{% endfor %}
+  </ul>
+</div>
+{% endif %}
 	<form action="/probate/applicant" method="post" class="form">
 		<h1 class="form-title heading-large">{{messages.applicant_header}}</h1>
 		<p class="form-hint">{{messages.applicant_header_hint}}</p>
 		<!-- Applicant details -->
 		<div class="form-group">
 			<!-- First Name -->
-			<label class="form-label" for="input-applicant-firstname">{{messages.applicant_firstname_question}}</label>
-			<input type="text" class="form-control" id="input-applicant-firstname" name="applicant_firstname" value="{{form.applicant.applicant_firstname}}">
+			<label class="form-label" for="applicant_firstname">{{messages.applicant_firstname_question}}</label>
+			<input type="text" class="form-control" id="applicant_firstname" name="applicant_firstname" value="{{form.applicant.applicant_firstname}}">
 		</div>	
 		<div class="form-group">
 			<!-- First Name -->
 			<label class="form-label" for="input-applicant-lastname">{{messages.applicant_lastname_question}}</label>
-			<input type="text" class="form-control" id="input-applicant-firstname" name="applicant_lastname" value="{{form.applicant.applicant_lastname}}">
+			<input type="text" class="form-control" id="applicant_lastname" name="applicant_lastname" value="{{form.applicant.applicant_lastname}}">
 		</div>	
 		{% include "probate/includes/postcodetoaddress.html" %}
 		</div>	
