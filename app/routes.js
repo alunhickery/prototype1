@@ -34,10 +34,16 @@ router.post('/probate/nameanddate', function(req,res) {
 
 router.post('/probate/address', function(req,res) {
   req.session.form.address = req.body;
-  if(req.body.radio_address_england_group == 'No'){
-    res.render('probate/stop',{'reason' : messages.stop_foreign_domicile, 'returnpage':'address'});
+  if (req.body.findaddress) {
+    req.session.form.form_action = 'findaddress';
+    res.render('probate/address', {'form': req.session.form});
   } else {
-  	res.render('probate/maritalstatus', {'form': req.session.form});
+    req.session.form.form_action = 'continue';
+    if(req.body.radio_address_england_group == 'No'){
+      res.render('probate/stop',{'reason' : messages.stop_foreign_domicile, 'returnpage':'address'});
+    } else {
+      res.render('probate/maritalstatus', {'form': req.session.form});
+    }
   }
 });
 
@@ -94,6 +100,24 @@ router.post('/probate/iht', function(req,res) {
 router.post('/probate/stop',function(req,res){
   var page_name = req.body.return_page;
   res.redirect('/probate/'+page_name);
+});
+
+
+router.post('/probate/applicant', function (req, res) {
+    req.session.form.applicant= req.body;
+    if (req.body.findaddress) {
+      req.session.form.form_action = 'findaddress';
+      res.render('probate/applicant', {'form': req.session.form});
+    } else {
+      req.session.form.form_action = 'continue';
+      validateFields(req, 'applicant');
+      if (req.validationErrors()) {
+          res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
+      }
+      else {
+          res.render('probate/nameanddate', {'form': req.session.form});
+      } 
+    }
 });
 
 //generic POST handler
