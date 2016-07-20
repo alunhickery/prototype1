@@ -38,3 +38,6 @@ jspm_packages
 
 # Intellij Idea files
 .idea
+
+# Eclipse project files
+.project
