@@ -16,7 +16,7 @@
            {% set executor1_fullname = form.applicant.applicant_firstname +' '+ form.applicant.applicant_lastname %}
              <input id="checkbox-executor-1" type="checkbox" name="checkbox_executors_notapplying_group" 
              		value="{{executor1_fullname}}" disabled="disabled">
-             <span class="heading-small">{{executor1_fullname}}</span><br>
+             <span>{{executor1_fullname}}</span><br>
            </label>
            {% for executor in form.executors %}
         {% set executor_fullname = executor.executor_firstname +' '+ executor.executor_lastname %}
@@ -24,7 +24,7 @@
              <input id="checkbox-executor-{{loop.index +1}}" type="checkbox" name="executors[{{loop.index}}][executor_notapplying]" 
              		value="{{executor_fullname}}"
              		{{ "checked=checked" if executor.executor_notapplying }}>
-             <span class="heading-small">{{executor_fullname}}</span><br>
+             <span>{{executor_fullname}}</span><br>
            </label>
            <input type="hidden" name="executors[{{loop.index}}][executor_firstname]" value="{{executor.executor_firstname}}">
            <input type="hidden" name="executors[{{loop.index}}][executor_lastname]" value="{{executor.executor_lastname}}">
@@ -37,31 +37,31 @@
 						<input id="radio-executor-died-before-{{loop.index}}" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_diedbefore}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_diedbefore }}>
-						<span class="heading-small">{{messages.executorsnotapplying_radio_diedbefore}}</span><br>
+						<span>{{messages.executorsnotapplying_radio_diedbefore}}</span><br>
 					</label>
 					<label for="radio-executor-died-after-{{loop.index}}" class="block-label">
 						<input id="radio-executor-died-after-{{loop.index}}" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_diedafter}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_diedafter }}>
-						<span class="heading-small">{{messages.executorsnotapplying_radio_diedafter}}</span><br>
+						<span>{{messages.executorsnotapplying_radio_diedafter}}</span><br>
 					</label>
 					<label for="radio-executor-reserved-{{loop.index}}" class="block-label">
 						<input id="radio-executor-reserved-{{loop.index}}" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_reserved}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_reserved }}>
-						<span class="heading-small">{{messages.executorsnotapplying_radio_reserved}}</span><br>
+						<span>{{messages.executorsnotapplying_radio_reserved}}</span><br>
 					</label>
 					<label for="radio-executor-renunciation-{{loop.index}}" class="block-label">
 						<input id="radio-executor-renunciation-{{loop.index}}" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_renunciation}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_renunciation }}>
-						<span class="heading-small">{{messages.executorsnotapplying_radio_renunciation}}</span><br>
+						<span>{{messages.executorsnotapplying_radio_renunciation}}</span><br>
 					</label>
 					<label for="radio-executor-attorney-{{loop.index}}" class="block-label">
 						<input id="radio-executor-attorney-{{loop.index}}" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
 						value="{{messages.executorsnotapplying_radio_attorney}}"
 						{{ "checked='checked'" if notApplyingReason ==messages.executorsnotapplying_radio_attorney }}>
-						<span class="heading-small">{{messages.executorsnotapplying_radio_attorney}}</span><br>
+						<span>{{messages.executorsnotapplying_radio_attorney}}</span><br>
 					</label>
 				  </fieldset>
 			  </div>
