@@ -9,7 +9,7 @@
 
   <form action="/probate/address" method="post" class="form">
     <h1 class="form-title heading-large">
-{{messages.address_question_1}}
+      {{messages.address_question_1}}
     </h1>
 	<div class="form-group">
 	<!--    <legend class="form-label">{{messages.address_question_1}}</legend> -->
@@ -32,7 +32,8 @@
       <p class="form-hint">{{messages.address_question_hint_2}}</p>
     </div> 
 
-    {% include "probate/includes/postcodetoaddress.html" %}
+    {% import "probate/includes/postcodetoaddress.html" as address_lookup %}
+    {{address_lookup.address(form.form_action,form.address.postcode,form.address.address)}}
             
     <div class="form-group">
       <input type="submit" class="button" value="Continue">

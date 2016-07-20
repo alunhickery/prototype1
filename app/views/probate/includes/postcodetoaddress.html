@@ -1,14 +1,17 @@
-<div class="form-group">
+{% macro address(form_action, postcode, address) %}
+  <div class="form-group">
           <label for="postcode">Postcode</label>
-          <input type="text" class="form-control form-control-1-8" id="postcode" name="postcode">
+          <input type="text" class="form-control form-control-1-8" id="postcode" name="postcode" value="{{postcode}}"> 
           <input type="submit" class="button-secondary" name="findaddress" value="Find UK address">
-</div>
-{% if form.form_action == 'findaddress' %}
+  </div>
+  {% if form_action == 'findaddress' or address %}
 	<div class="form-group">
-	  <label for="last-address">Select address</label>
-	  <select id="last-address" class="form-control form-control-1-3" name="address">
-	    <option>Buckingham palace road</option>
-	    <option>Petty France</option>
+	  <label for="address">Select address</label>
+	  <select id="address" class="form-control form-control-1-3" name="address">
+	  	<option value="">Select address</option>
+	    <option {{"selected=selected" if address=="Buckingham palace road"}}>Buckingham palace road</option>
+	    <option {{"selected=selected" if address=="Petty France"}}>Petty France</option>
 	  </select>
 	</div>	
-{% endif %} 
+  {% endif %} 
+{% endmacro %} 

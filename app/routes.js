@@ -111,15 +111,19 @@ router.post('/probate/stop',function(req,res){
 router.post('/probate/applicant', function (req, res) {
     req.session.form.applicant= req.body;
     if (req.body.findaddress) {
-      req.session.form.form_action = 'findaddress';
-      res.render('probate/applicant', {'form': req.session.form});
+      validateFields(req, 'findaddress');
+      if (req.validationErrors()) {
+          res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
+      } else {
+        req.session.form.form_action = 'findaddress';
+        res.render('probate/applicant', {'form': req.session.form});
+      }
     } else {
-      req.session.form.form_action = 'continue';
       validateFields(req, 'applicant');
       if (req.validationErrors()) {
           res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
-      }
-      else {
+      } else {
+          req.session.form.form_action = 'continue';
           res.render('probate/nameanddate', {'form': req.session.form});
       } 
     }
