@@ -66,7 +66,7 @@ router.post('/probate/will', function (req,res){
     res.render('probate/stop',{'reason': messages.stop_codicil_will,'returnpage':'will'});
   }
    else {
-	  res.render('probate/executors', {'form': req.session.form});
+	  res.render('probate/isexecutor', {'form': req.session.form});
   }
 });
 
@@ -120,6 +120,7 @@ router.post('/probate/applicant', function (req, res) {
           res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
       }
       else {
+        res.append('Link','/probate/nameanddate');
           res.render('probate/nameanddate', {'form': req.session.form});
       } 
     }
@@ -129,10 +130,6 @@ router.post('/probate/applicant', function (req, res) {
 router.post('/probate/:page', function (req, res) {
     var page_name = req.params.page;
     console.log('generic post page:'+page_name);
-    if (!req.session.form) {
-        req.session.form = {};
-    }
-    console.log('>>>>>>'+req.body);
     req.session.form[page_name] = req.body;
     validateFields(req, page_name);
     if (req.validationErrors()) {

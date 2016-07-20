@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  {{ messages.executors_title }}
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+	<form action="/probate/isexecutor" method="post" class="form">
+		<h1 class="form-title heading-large">{{messages.nameanddate_question_3}}</h1>
+		<div class="form-group">
+			<!-- Are you an exector> -->
+			<legend class="form-label">{{messages.applicant_executor_question}}</legend>
+			<p class="form-hint">{{messages.applicant_executor_hint}}</p>
+			<fieldset class="inline" id="radio_applicant_executor_group">
+				<legend class="visuallyhidden">{{messages.applicant_executor_question}}</legend>
+				<label class="block-label" for="radio-executor-yes">
+					<input id="radio-executor-yes" type="radio" name="radio_applicant_executor_group" value="Yes" 
+							{{ "checked='checked'" if form.isexecutor.radio_applicant_executor_group =="Yes" }}>Yes
+				</label>
+				<label class="block-label" for="radio-other-names-no">
+					<input id="radio-executor-no" type="radio" name="radio_applicant_executor_group" value="No" 
+							{{ "checked='checked'" if form.isexecutor.radio_applicant_executor_group == "No" }}>No
+				</label>
+			</fieldset>
+		</div>
+		<div class="form-group">
+			<input type="submit" class="button" value="Continue">
+		</div>	
+	</form>
+</main>
+{% endblock %}
+					
