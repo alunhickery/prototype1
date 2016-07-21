@@ -37,46 +37,41 @@ router.post('/probate/nameanddate', function(req,res) {
   }
 });
 
-router.post('/probate/address', function(req,res) {
-  req.session.form.address = req.body;
-  if (req.body.findaddress) {
-    req.session.form.form_action = 'findaddress';
-    res.render('probate/address', {'form': req.session.form});
-  } else {
-    req.session.form.form_action = 'continue';
-    if(req.body.radio_address_england_group == 'No'){
-      res.render('probate/stop',{'reason' : messages.stop_foreign_domicile, 'returnpage':'address'});
-    } else {
-      res.render('probate/maritalstatus', {'form': req.session.form});
-    }
-  }
-});
-
 
 router.post('/probate/will', function (req,res){
   req.session.form.will = req.body;
-  if(req.body.radio_will_group == 'No'){
-    res.render('probate/stop',{'reason' : messages.stop_no_will,'returnpage':'will'});
-  }else if (req.body.radio_will_original_group =='No'){
-    res.render('probate/stop',{'reason': messages.stop_no_original_will,'returnpage':'will'});
-  }else if (req.body.radio_will_address_group =='Yes'){
-    res.render('probate/stop',{'reason': messages.stop_outside_englandwales_will,'returnpage':'will'});
-  }
-  else if (req.body.radio_codicil_group =='Yes'){
-    res.render('probate/stop',{'reason': messages.stop_codicil_will,'returnpage':'will'});
-  }
-   else {
-	  res.render('probate/isexecutor', {'form': req.session.form});
+  validateFields(req, 'will');
+  if (req.validationErrors()) {
+        res.render('probate/will', {'form': req.session.form, 'errors': req.validationErrors()});
+  } else {
+    if(req.body.radio_will_group == 'No'){
+      res.render('probate/stop',{'reason' : messages.stop_no_will,'returnpage':'will'});
+    }else if (req.body.radio_will_original_group =='No'){
+       res.render('probate/stop',{'reason': messages.stop_no_original_will,'returnpage':'will'});
+    }else if (req.body.radio_will_address_group =='Yes'){
+      res.render('probate/stop',{'reason': messages.stop_outside_englandwales_will,'returnpage':'will'});
+    }
+    else if (req.body.radio_codicil_group =='Yes'){
+      res.render('probate/stop',{'reason': messages.stop_codicil_will,'returnpage':'will'});
+     }
+     else {
+	   res.render('probate/isexecutor', {'form': req.session.form});
+    }
   }
 });
 
 
 router.post('/probate/executors', function(req,res) {
   if (req.body.addexecutor) {
-    req.session.form.form_action = "addexecutor";
-    if (!req.session.form.executors) {req.session.form.executors = [];}
-    req.session.form.executors[req.session.form.executors.length] = req.body;
-    res.render('probate/executors', {'form': req.session.form});
+    validateFields(req, 'executors');
+    if (req.validationErrors()) {
+      res.render('probate/executors', {'form': req.session.form, 'errors': req.validationErrors()});
+    } else {
+      req.session.form.form_action = "addexecutor";
+      if (!req.session.form.executors) {req.session.form.executors = [];}
+      req.session.form.executors[req.session.form.executors.length] = req.body;
+      res.render('probate/executors', {'form': req.session.form});
+   }
   } else if (req.body.cancel_executor) {
     req.session.form.form_action = "cancel_executor";
     res.render('probate/executors', {'form': req.session.form});
@@ -95,10 +90,15 @@ router.post('/probate/executorsnotapplying', function(req,res) {
 
 router.post('/probate/iht', function(req,res) {
   req.session.form.iht = req.body;
-  if(req.body.radio_iht_group == 'No'){
-    res.render('probate/stop',{'reason' : messages.stop_iht, 'returnpage':'iht'});
+  validateFields(req, 'iht');
+  if (req.validationErrors()) {
+    res.render('probate/iht', {'form': req.session.form, 'errors': req.validationErrors()});
   } else {
-    res.render('probate/summary', {'form': req.session.form});
+    if(req.body.radio_iht_group == 'No'){
+      res.render('probate/stop',{'reason' : messages.stop_iht, 'returnpage':'iht'});
+    } else {
+      res.render('probate/summary', {'form': req.session.form});
+    }
   }
 });
 
@@ -107,11 +107,35 @@ router.post('/probate/stop',function(req,res){
   res.redirect('/probate/'+page_name);
 });
 
+router.post('/probate/address', function(req,res) {
+  req.session.form.address = req.body;
+  if (req.body.findaddress) {
+    validateFields(req, 'addresslookup');
+    if (req.validationErrors()) {
+      res.render('probate/address', {'form': req.session.form, 'errors': req.validationErrors()});
+    } else {
+      req.session.form.form_action = 'findaddress';
+      res.render('probate/address', {'form': req.session.form});
+    }
+  } else {
+    req.session.form.form_action = 'continue';
+    validateFields(req, 'address');
+    if (req.validationErrors()) {
+      res.render('probate/address', {'form': req.session.form, 'errors': req.validationErrors()});
+    } else {
+      if(req.body.radio_address_england_group == 'No'){
+        res.render('probate/stop',{'reason' : messages.stop_foreign_domicile, 'returnpage':'address'});
+      } else {
+        res.render('probate/maritalstatus', {'form': req.session.form});
+      }
+    }
+  }
+});
 
 router.post('/probate/applicant', function (req, res) {
     req.session.form.applicant= req.body;
     if (req.body.findaddress) {
-      validateFields(req, 'findaddress');
+      validateFields(req, 'addresslookup');
       if (req.validationErrors()) {
           res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
       } else {

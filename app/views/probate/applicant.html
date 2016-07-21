@@ -22,8 +22,8 @@
 			<label class="form-label" for="applicant_lastname">{{messages.applicant_lastname_question}}</label>
 			<input type="text" class="form-control" id="applicant_lastname" name="applicant_lastname" value="{{form.applicant.applicant_lastname}}">
 		</div>	
-		{% import "probate/includes/postcodetoaddress.html" as address_lookup %}
-		{{address_lookup.address(form.form_action,form.applicant.postcode,form.applicant.address)}}
+		{% import "probate/includes/addresslookup.html" as addresslookup %}
+		{{addresslookup.address(form.form_action,form.applicant.postcode,form.applicant.address)}}
 		</div>	
 		<div class="form-group">
 			<!-- home phone number -->

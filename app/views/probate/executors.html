@@ -6,6 +6,7 @@
 
 {% block content %}
 <main id="content" role="main">
+  {% include "probate/includes/error_summary.html" %}
   <form action="/probate/executors" method="post" class="form">
       <h1 class="form-title heading-large">{{messages.executors_question_1}}</h1>
       <div class="form-group">
