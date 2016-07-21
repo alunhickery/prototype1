@@ -24,15 +24,13 @@
             {{messages.applicant_home_phone_number_question}}<br>
             {{messages.applicant_mobilework_phone_number_question}}<br>
             {{messages.applicant_email_address_question}}<br>
-            {{messages.applicant_relationship_deceased}}<br>
-            {{messages.applicant_executor_question}}</td>
+            {{messages.applicant_relationship_deceased}}</td>
         <td>{{form.applicant.applicant_firstname}}<br>
             {{form.applicant.applicant_lastname}}<br>
             {{form.applicant.applicant_home_phone_number}}<br>
             {{form.applicant.applicant_mobilework_phone_number}}<br>
             {{form.applicant.applicant_email_address}}<br>
-            {{form.applicant.applicant_relationship_deceased}}<br>
-            {{form.applicant.radio_applicant_executor_group}}</td>
+            {{form.applicant.applicant_relationship_deceased}}</td>
         <td class="change-answer"><a href="/probate/applicant">Change 
           <span class="visuallyhidden">change applicant details</span></a>
         </td>
@@ -103,6 +101,13 @@
         <th colspan="3"><span class="heading-medium">The executors</span></th>
       </tr>
       <tr>
+      <tr>
+        <td>{{messages.applicant_executor_question}}</td>
+        <td>{{form.isexecutor.radio_applicant_executor_group}}</td>
+        <td class="change-answer"><a href="/probate/isexecutor">Change 
+          <span class="visuallyhidden">change executor details</span></a>
+        </td>
+      </tr>
         <td>Executor 1<br>
             {% for executor in form.executors %}Executor {{loop.index +1}}<br>{% endfor %}</td>
         <td>{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}<br>
