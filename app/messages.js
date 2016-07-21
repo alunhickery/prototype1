@@ -46,7 +46,7 @@ module.exports = {
   maritalstatus_radio_3: 'Widowed - their spouse died',
   maritalstatus_radio_hint_3: 'Their spouse died.', 
   maritalstatus_radio_4: 'Divorced, or their civil partnership was dissolved',
-  maritalstatus_radio_5: 'Judicially separated',
+  maritalstatus_radio_5: 'Legally separated',
   maritalstatus_radio_hint_5: 'They were legally separated.', 
 
   will_title: 'Will and codicil',
