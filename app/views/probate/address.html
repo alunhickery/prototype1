@@ -16,7 +16,7 @@
       <p class="form-hint">{{messages.address_question_hint_1}}</p>
       <fieldset class="inline">
 			<legend class="visuallyhidden">{{address_question_1}}</legend>
-			<label class="block-label" for="radio-address-england-yes">
+			<label class="block-label" for="radio-address-england-yes" data-target="address-details">
 				<input id="radio-address-england-yes" type="radio" name="radio_address_england_group" value="Yes"
                 {{ "checked='checked'" if form.address.radio_address_england_group =="Yes" }}>Yes
 			</label>
@@ -26,15 +26,17 @@
 			</label>
 		</fieldset>
     </div>
-    <!-- Deceased details -->
-    <div class="form-group">
-	    <label class="form-label" for="last-address">{{messages.address_question_2}}</label>
-      <p class="form-hint">{{messages.address_question_hint_2}}</p>
-    </div> 
-
-    {% import "probate/includes/postcodetoaddress.html" as address_lookup %}
-    {{address_lookup.address(form.form_action,form.address.postcode,form.address.address)}}
-            
+    <!-- Deceased address details -->
+    <div class="panel panel-border-narrow {{ '' if form.address.radio_address_england_group =='Yes' else 'js-hidden' }}" 
+        id="address-details">
+      <div class="form-group">
+	     <label class="form-label" for="last-address">{{messages.address_question_2}}</label>
+        <p class="form-hint">{{messages.address_question_hint_2}}</p>
+      </div> 
+      {% import "probate/includes/postcodetoaddress.html" as address_lookup %}
+      {{address_lookup.address(form.form_action,form.address.postcode,form.address.address)}}
+    </div>
+              
     <div class="form-group">
       <input type="submit" class="button" value="Continue">
     </div>
