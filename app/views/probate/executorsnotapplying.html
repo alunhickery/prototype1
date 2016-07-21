@@ -8,9 +8,8 @@
 {% block content %}
 <main id="content" role="main">
   <form action="/probate/executorsnotapplying" method="post" class="form">
-  <h1 class="form-title heading-large"></h1>
+  <h1 class="form-title heading-large">{{messages.executorsnotapplying_question_listall}}</h1>
     <div class="form-group">
-	   <legend class="form-label">{{messages.executorsnotapplying_question_listall}}</legend>
          <fieldset>
            <label for="checkbox-executor-1" class="block-label">
            {% set executor1_fullname = form.applicant.applicant_firstname +' '+ form.applicant.applicant_lastname %}
@@ -32,6 +31,7 @@
 	       		id="executors{{loop.index +1}}-details">
 			  <div class="form-group">
 			  	{% set notApplyingReason = executor.executor_notapplying_reason %}
+  			     <legend class="form-label">{{messages.executorsnotapplying_question_reason}}</legend><br>
   			     <fieldset>
 					<label for="radio-executor-died-before-{{loop.index}}" class="block-label">
 						<input id="radio-executor-died-before-{{loop.index}}" type="radio" name="executors[{{loop.index}}][executor_notapplying_reason]" 
