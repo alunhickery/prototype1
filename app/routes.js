@@ -32,7 +32,7 @@ router.post('/probate/nameanddate', function(req,res) {
 	if (req.validationErrors()) {
 	  res.render('probate/nameanddate', {'form': req.session.form, 'errors': req.validationErrors()});
 	} else {
-	  res.render('probate/dateofbirth', {'form': req.session.form});
+	  res.redirect('dateofbirth');
 	}   
   }
 });
@@ -55,7 +55,7 @@ router.post('/probate/will', function (req,res){
       res.render('probate/stop',{'reason': messages.stop_codicil_will,'returnpage':'will'});
      }
      else {
-	   res.render('probate/isexecutor', {'form': req.session.form});
+	   res.redirect('isexecutor');
     }
   }
 });
@@ -79,13 +79,13 @@ router.post('/probate/executors', function(req,res) {
     req.session.form.form_action = "add_another_executor";
     res.render('probate/executors', {'form': req.session.form});
   } else {
-    res.render('probate/executorsnotapplying', {'form': req.session.form});
+    res.redirect('executorsnotapplying');
   }
 });
 
 router.post('/probate/executorsnotapplying', function(req,res) {
   req.session.form.executors = req.body.executors;
-  res.render('probate/iht', {'form': req.session.form});
+  res.redirect('iht');
 });
 
 router.post('/probate/iht', function(req,res) {
@@ -97,14 +97,14 @@ router.post('/probate/iht', function(req,res) {
     if(req.body.radio_iht_group == 'No'){
       res.render('probate/stop',{'reason' : messages.stop_iht, 'returnpage':'iht'});
     } else {
-      res.render('probate/summary', {'form': req.session.form});
+      res.redirect('summary');
     }
   }
 });
 
 router.post('/probate/stop',function(req,res){
   var page_name = req.body.return_page;
-  res.redirect('/probate/'+page_name);
+  res.redirect(page_name);
 });
 
 router.post('/probate/address', function(req,res) {
@@ -126,7 +126,7 @@ router.post('/probate/address', function(req,res) {
       if(req.body.radio_address_england_group == 'No'){
         res.render('probate/stop',{'reason' : messages.stop_foreign_domicile, 'returnpage':'address'});
       } else {
-        res.render('probate/maritalstatus', {'form': req.session.form});
+        res.redirect('maritalstatus');
       }
     }
   }
@@ -140,7 +140,7 @@ router.post('/probate/applicant', function (req, res) {
           res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
       } else {
         req.session.form.form_action = 'findaddress';
-        res.render('probate/applicant', {'form': req.session.form});
+        res.redirect('applicant');
       }
     } else {
       validateFields(req, 'applicant');
@@ -148,7 +148,7 @@ router.post('/probate/applicant', function (req, res) {
           res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
       } else {
           req.session.form.form_action = 'continue';
-          res.render('probate/nameanddate', {'form': req.session.form});
+          res.redirect('nameanddate');
       } 
     }
 });
@@ -163,7 +163,7 @@ router.post('/probate/:page', function (req, res) {
         res.render('probate/' + page_name, {'form': req.session.form, 'errors': req.validationErrors()});
     }
     else {
-        res.render('probate/' + getNextPage(page_name), {'form': req.session.form});
+        res.redirect(getNextPage(page_name));
     }
 });
 
