@@ -33,6 +33,7 @@
     "grunt-sync": "^0.5.1",
     "hogan.js": "3.0.2",
     "minimist": "0.0.8",
+    "phantomjs": "^2.1.7",
     "portscanner": "^1.0.0",
     "prompt": "^0.2.14",
     "readdir": "0.0.6",
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "webdriverio": "^4.2.1",
-    "wdio-mocha-framework": "^0.3.6"
+    "wdio-mocha-framework": "^0.3.6",
+    "wdio-selenium-standalone-service": "~0.0.5"
   }
 }
