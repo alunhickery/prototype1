@@ -19,20 +19,36 @@
         <th colspan="3"><span class="heading-medium">{{messages.applicant_header}}</span></th>
       </tr>
       <tr>
-        <td>{{messages.applicant_firstname_question}}<br>
-            {{messages.applicant_lastname_question}}<br>
-            {{messages.applicant_address_question}}<br>
-            {{messages.applicant_home_phone_number_question}}<br>
-            {{messages.applicant_mobilework_phone_number_question}}<br>
-            {{messages.applicant_email_address_question}}<br>
-            {{messages.applicant_relationship_deceased}}</td>
-        <td>{{form.applicant.applicant_firstname}}<br>
-            {{form.applicant.applicant_lastname}}<br>
-            {{form.applicant.address}}<br>
-            {{form.applicant.applicant_home_phone_number}}<br>
-            {{form.applicant.applicant_mobilework_phone_number}}<br>
-            {{form.applicant.applicant_email_address}}<br>
-            {{form.applicant.applicant_relationship_deceased}}</td>
+        <td colspan="2">
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.applicant_firstname_question}}</div>
+            <div class="column-one-half">{{form.applicant.applicant_firstname}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.applicant_lastname_question}}</div>
+            <div class="column-one-half">{{form.applicant.applicant_lastname}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.applicant_address_question}}</div>
+            <div class="column-one-half">{{form.applicant.address}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.applicant_home_phone_number_question}}</div>
+            <div class="column-one-half">{{form.applicant.applicant_home_phone_number}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.applicant_mobilework_phone_number_question}}</div>
+            <div class="column-one-half">{{form.applicant.applicant_mobilework_phone_number}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.applicant_email_address_question}}</div>
+            <div class="column-one-half">{{form.applicant.applicant_email_address}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.applicant_relationship_deceased}}</div>
+            <div class="column-one-half">{{form.applicant.applicant_relationship_deceased}}</div>
+          </div>
+        </td>
         <td class="change-answer"><a href="/probate/applicant">Change 
           <span class="visuallyhidden">change applicant details</span></a>
         </td>
@@ -43,16 +59,32 @@
         <th colspan="3"><span class="heading-medium">The person who has died</span></th>
       </tr>
       <tr>
-        <td>{{messages.nameanddate_question_firstname}}<br>
-            {{messages.nameanddate_question_lastname}}<br>
-            {{messages.nameanddate_question_2}}<br>
-            {{messages.nameanddate_question_3}}<br>
-            {{messages.nameanddate_question_4}}</td>
-        <td>{{form.nameanddate.deceased_firstname}}<br>
-            {{form.nameanddate.deceased_lastname}}<br>
-            {{form.nameanddate.radio_other_names_group}}<br>
-            {{form.dateofbirth.deceased_dob_day +"/"+ form.dateofbirth.deceased_dob_month +"/"+ form.dateofbirth.deceased_dob_year}}<br>
-            {{form.dateofdeath.deceased_death_day +"/"+ form.dateofdeath.deceased_death_month +"/"+ form.dateofdeath.deceased_death_year}}</td>
+        <td colspan="2">
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.nameanddate_question_firstname}}</div>
+            <div class="column-one-half">{{form.nameanddate.deceased_firstname}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.nameanddate_question_lastname}}</div>
+            <div class="column-one-half">{{form.nameanddate.deceased_lastname}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.nameanddate_question_2}}</div>
+            <div class="column-one-half">{{form.nameanddate.radio_other_names_group}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.nameanddate_question_3}}</div>
+            <div class="column-one-half">
+        {{form.dateofbirth.deceased_dob_day +" "+ form.dateofbirth.deceased_dob_month +" "+ form.dateofbirth.deceased_dob_year}}
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.nameanddate_question_4}}</div>
+            <div class="column-one-half">
+        {{form.dateofdeath.deceased_death_day +" "+ form.dateofdeath.deceased_death_month +" "+ form.dateofdeath.deceased_death_year}} 
+            </div>
+          </div>
+        </td>
         <td class="change-answer"><a href="/probate/nameanddate">Change 
           <span class="visuallyhidden">change names and dates</span></a>
         </td>
@@ -60,18 +92,28 @@
       <tr>
       <!-- address -->
       <tr>
-        <td>{{messages.address_question_1}}<br>
-            {{messages.address_question_2}}</td>
-        <td>{{form.address.radio_address_england_group}}<br>
-            {{form.address.address}}</td>
+        <td colspan="2">
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.address_question_1}}</div>
+            <div class="column-one-half">{{form.address.radio_address_england_group}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.address_question_2}}</div>
+            <div class="column-one-half">{{form.address.address}}</div>
+          </div>
+        </td>
         <td class="change-answer"><a href="/probate/address">Change 
           <span class="visuallyhidden">change address details</span></a>
         </td>
       </tr>
       <!-- maritalstatus -->
       <tr>
-        <td>{{messages.maritalstatus_question_1}}</td>
-        <td>{{form.maritalstatus.radio_marital_group}}</td>
+        <td colspan="2">
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.maritalstatus_question_1}}</div>
+            <div class="column-one-half">{{form.maritalstatus.radio_marital_group}}</div>
+          </div>
+        </td>
         <td class="change-answer"><a href="/probate/maritalstatus">Change 
           <span class="visuallyhidden">change marital status</span></a>
         </td>
@@ -81,20 +123,30 @@
         <th colspan="3"><span class="heading-medium">The will</span></th>
       </tr>
       <tr>
-        <td>{{messages.will_question_1}}<br>
-            {% if form.will.radio_will_group == "Yes" %}
-              {{messages.will_question_2}}<br>
-              {{messages.will_question_3}}<br>
-            {% endif %}
-              {{messages.will_question_4}}<br>
-              {{messages.will_question_5}}</td>
-        <td>{{form.will.radio_will_group}}<br> 
-            {% if form.will.radio_will_group == "Yes" %}
-              {{form.will.radio_will_original_group}}<br>
-              {{form.will.will_day +"/"+ form.will.will_month +"/"+ form.will.will_year}}<br>
-            {% endif %}
-              {{form.will.radio_will_address_group}}<br>
-              {{form.will.radio_codicil_group}}</td>
+        <td colspan="2">
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.will_question_1}}</div>
+            <div class="column-one-half">{{form.will.radio_will_group}}</div>
+          </div>
+        {% if form.will.radio_will_group == "Yes" %}
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.will_question_2}}</div>
+            <div class="column-one-half">{{form.will.radio_will_original_group}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.will_question_3}}</div>
+            <div class="column-one-half">{{form.will.will_day +" "+ form.will.will_month +" "+ form.will.will_year}}</div>
+          </div>
+        {% endif %}
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.will_question_4}}</div>
+            <div class="column-one-half">{{form.will.radio_will_address_group}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.will_question_5}}</div>
+            <div class="column-one-half">{{form.will.radio_codicil_group}}</div>
+          </div>        
+        </td>
         <td class="change-answer"><a href="/probate/will">Change 
           <span class="visuallyhidden">change will details</span></a>
         </td>
@@ -104,18 +156,28 @@
       </tr>
       <tr>
       <tr>
-        <td>{{messages.applicant_executor_question}}</td>
-        <td>{{form.isexecutor.radio_applicant_executor_group}}</td>
+        <td colspan="2">
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.applicant_executor_question}}</div>
+            <div class="column-one-half">{{form.isexecutor.radio_applicant_executor_group}}</div>
+          </div>
+        </td>
         <td class="change-answer"><a href="/probate/isexecutor">Change 
           <span class="visuallyhidden">change executor details</span></a>
         </td>
       </tr>
-        <td>Executor 1<br>
-            {% for executor in form.executors %}Executor {{loop.index +1}}<br>{% endfor %}</td>
-        <td>{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}<br>
-            {% for executor in form.executors %}
-              {{executor.executor_firstname}} {{executor.executor_lastname}}<br>
-            {% endfor %}</td>
+        <td colspan="2">
+          <div class="grid-row">
+            <div class="column-one-half">Executor 1</div>
+            <div class="column-one-half">{{form.applicant.applicant_firstname}} {{form.applicant.applicant_lastname}}</div>
+          </div>
+        {% for executor in form.executors %}
+          <div class="grid-row">
+            <div class="column-one-half">Executor {{loop.index +1}}</div>
+            <div class="column-one-half">{{executor.executor_firstname}} {{executor.executor_lastname}}</div>
+          </div>
+        {% endfor %}
+        </td>
         <td class="change-answer"><a href="/probate/executors">Change 
           <span class="visuallyhidden">change executor details</span></a>
         </td>
@@ -124,12 +186,14 @@
         <th colspan="3"><span>Executors not applying</span></th>
       </tr>
       <tr>
-        <td>{% for executor in form.executors %}{% if executor.executor_notapplying %}
-              {{executor.executor_notapplying}}<br>
-            {% endif %}{% endfor %}</td>
-        <td>{% for executor in form.executors %}{% if executor.executor_notapplying %}
-              {{executor.executor_notapplying_reason}}<br>
-            {% endif %}{% endfor %}</td>
+        <td colspan="2">
+        {% for executor in form.executors %}{% if executor.executor_notapplying %}
+          <div class="grid-row">
+            <div class="column-one-half">{{executor.executor_notapplying}}</div>
+            <div class="column-one-half">{{executor.executor_notapplying_reason}}</div>
+          </div>
+        {% endif %}{% endfor %}
+        </td>
         <td class="change-answer"><a href="/probate/executorsnotapplying">Change 
           <span class="visuallyhidden">change non applying executors details</span></a>
         </td>
@@ -139,18 +203,26 @@
         <th colspan="3"><span class="heading-medium">Inheritance tax</span></th>
       </tr>
       <tr>
-        <td>{{messages.iht_question_1}}<br>
-            {% if form.iht.radio_iht_group == "Yes" %}   
-                {{messages.iht_question_2}}<br>
-                {{messages.iht_question_3}}<br>
-                {{messages.iht_question_4}}
-            {% endif %}</td>
-        <td>{{form.iht.radio_iht_group}}<br>
-            {% if form.iht.radio_iht_group == "Yes" %}   
-               {{form.iht.input_iht_id}}<br>
-               {{form.iht.input_iht_gross}}<br>
-               {{form.iht.input_iht_net}}
-            {% endif %}</td>
+        <td colspan="2">
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.iht_question_1}}</div>
+            <div class="column-one-half">{{form.iht.radio_iht_group}}</div>
+          </div>
+        {% if form.iht.radio_iht_group == "Yes" %}
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.iht_question_2}}</div>
+            <div class="column-one-half">{{form.iht.input_iht_id}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.iht_question_3}}</div>
+            <div class="column-one-half">{{form.iht.input_iht_gross}}</div>
+          </div>
+          <div class="grid-row">
+            <div class="column-one-half">{{messages.iht_question_4}}</div>
+            <div class="column-one-half">{{form.iht.input_iht_net}}</div>
+          </div>
+        {% endif %}
+        </td>
         <td class="change-answer"><a href="/probate/iht">Change 
           <span class="visuallyhidden">change inheritence tax details</span></a>
         </td>
