@@ -13,7 +13,7 @@ module.exports = {
   applicant_home_phone_number_question:'Home phone number',
   applicant_mobilework_phone_number_question:'Mobile phone number',
   applicant_email_address_question:'Email address',
-  applicant_relationship_deceased:'Relationship to the person who died',
+  applicant_relationship_deceased:'Your relationship to the person who died',
   applicant_executor_question:'Are you named as an executor in their will?',
   nameanddate_header: 'What is the full name of the person who died?',
 
@@ -94,7 +94,7 @@ module.exports = {
   stop_alias: 'The person was known by other names',
   address_title: 'Address',
   nameanddate_title: 'nameanddate',
-  error_textfield_text: 'Answer this question',
+  error_textfield_text: 'Answer all the questions',
   error_radiobutton_text:'Select an answer',
  
 };	
