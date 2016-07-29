@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node start.js",
-    "test": "./node_modules/.bin/wdio wdio.conf.js"
+    "test": "./node_modules/.bin/mocha test/unit",
+    "test-functional": "./node_modules/.bin/wdio wdio.conf.js"
   },
   "dependencies": {
     "basic-auth": "^1.0.3",
