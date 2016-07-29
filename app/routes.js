@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 var messages = require('./messages.js');
-var pages = require('./pages.js');
+var pageFlow = require('./pageFlow');
 
 var router = express.Router();
 
@@ -28,7 +28,7 @@ router.post('/probate/nameanddate', function(req,res) {
   if(req.body.radio_other_names_group == 'Yes'){
     res.render('probate/stop',{'reason' : messages.stop_alias, 'returnpage':'nameanddate'});
   } else {
-	validateFields(req, 'nameanddate');
+	pageFlow.validateFields(req, 'nameanddate');
 	if (req.validationErrors()) {
 	  res.render('probate/nameanddate', {'form': req.session.form, 'errors': req.validationErrors()});
 	} else {
@@ -40,7 +40,7 @@ router.post('/probate/nameanddate', function(req,res) {
 
 router.post('/probate/will', function (req,res){
   req.session.form.will = req.body;
-  validateFields(req, 'will');
+  pageFlow.validateFields(req, 'will');
   if (req.validationErrors()) {
         res.render('probate/will', {'form': req.session.form, 'errors': req.validationErrors()});
   } else {
@@ -63,7 +63,7 @@ router.post('/probate/will', function (req,res){
 
 router.post('/probate/executors', function(req,res) {
   if (req.body.addexecutor) {
-    validateFields(req, 'executors');
+    pageFlow.validateFields(req, 'executors');
     if (req.validationErrors()) {
       res.render('probate/executors', {'form': req.session.form, 'errors': req.validationErrors()});
     } else {
@@ -90,7 +90,7 @@ router.post('/probate/executorsnotapplying', function(req,res) {
 
 router.post('/probate/iht', function(req,res) {
   req.session.form.iht = req.body;
-  validateFields(req, 'iht');
+  pageFlow.validateFields(req, 'iht');
   if (req.validationErrors()) {
     res.render('probate/iht', {'form': req.session.form, 'errors': req.validationErrors()});
   } else {
@@ -110,7 +110,7 @@ router.post('/probate/stop',function(req,res){
 router.post('/probate/address', function(req,res) {
   req.session.form.address = req.body;
   if (req.body.findaddress) {
-    validateFields(req, 'addresslookup');
+    pageFlow.validateFields(req, 'addresslookup');
     if (req.validationErrors()) {
       res.render('probate/address', {'form': req.session.form, 'errors': req.validationErrors()});
     } else {
@@ -119,7 +119,7 @@ router.post('/probate/address', function(req,res) {
     }
   } else {
     req.session.form.form_action = 'continue';
-    validateFields(req, 'address');
+    pageFlow.validateFields(req, 'address');
     if (req.validationErrors()) {
       res.render('probate/address', {'form': req.session.form, 'errors': req.validationErrors()});
     } else {
@@ -135,7 +135,7 @@ router.post('/probate/address', function(req,res) {
 router.post('/probate/applicant', function (req, res) {
     req.session.form.applicant= req.body;
     if (req.body.findaddress) {
-      validateFields(req, 'addresslookup');
+      pageFlow.validateFields(req, 'addresslookup');
       if (req.validationErrors()) {
           res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
       } else {
@@ -143,7 +143,7 @@ router.post('/probate/applicant', function (req, res) {
         res.redirect('applicant');
       }
     } else {
-      validateFields(req, 'applicant');
+      pageFlow.validateFields(req, 'applicant');
       if (req.validationErrors()) {
           res.render('probate/applicant', {'form': req.session.form, 'errors': req.validationErrors()});
       } else {
@@ -158,7 +158,7 @@ router.post('/probate/:page', function (req, res) {
     var page_name = req.params.page;
     console.log('generic post page:'+page_name);
     req.session.form[page_name] = req.body;
-    validateFields(req, page_name);
+    pageFlow.validateFields(req, page_name);
     if (req.validationErrors()) {
         res.render('probate/' + page_name, {'form': req.session.form, 'errors': req.validationErrors()});
     }
@@ -171,19 +171,5 @@ router.post('/probate/:page', function (req, res) {
 router.get('/probate/:page', function (req, res) {
         res.render('probate/' + req.params.page, {'form': req.session.form});
 });
-
-
-function getNextPage(currentPage) {
-  index = pages.list.indexOf(currentPage);
-  if(index >= 0 && index < pages.list.length - 1)
-    return pages.list[index + 1];
-}
-
-function validateFields(req, currentPage) {
-  var mandatoryFieldsArray = pages.mandatoryFields[currentPage];
-    mandatoryFieldsArray.forEach(function(s) {
-        req.checkBody(s, 'Field should not be empty').notEmpty();
-      }
-  )}
 
 module.exports = router;
