@@ -6,47 +6,33 @@
 
 {% block content %}
 
+{% import "probate/widgets/formelements.html" as formelements %}
+{% import "probate/widgets/addresslookup.html" as addresslookup %}
+
 <main id="content" role="main">
 	{% include "probate/includes/error_summary.html" %}
 	<form action="/probate/applicant" method="post" class="form">
 		<h1 class="form-title heading-large">{{messages.applicant_header}}</h1>
 		<p class="form-hint">{{messages.applicant_header_hint}}</p>
-		<!-- Applicant details -->
-		<div class="form-group">
-			<!-- First Name -->
-			<label class="form-label" for="applicant_firstname">{{messages.applicant_firstname_question}}</label>
-			<input type="text" class="form-control" id="applicant_firstname" name="applicant_firstname" value="{{form.applicant.applicant_firstname}}">
-		</div>	
-		<div class="form-group">
-			<!-- First Name -->
-			<label class="form-label" for="applicant_lastname">{{messages.applicant_lastname_question}}</label>
-			<input type="text" class="form-control" id="applicant_lastname" name="applicant_lastname" value="{{form.applicant.applicant_lastname}}">
-		</div>	
-		{% import "probate/includes/addresslookup.html" as addresslookup %}
-		{{addresslookup.address(form.form_action,form.applicant.postcode,form.applicant.address)}}
-		</div>	
-		<div class="form-group">
-			<!-- home phone number -->
-			<label class="form-label" for="applicant_home_phone_number">{{messages.applicant_home_phone_number_question}}</label>
-			<input type="text" class="form-control" id="applicant_home_phone_number" name="applicant_home_phone_number" value="{{form.applicant.applicant_home_phone_number}}">
-		</div>
-		<div class="form-group">
-			<!-- mobile phone number -->
-			<label class="form-label" for="applicant_mobilework_phone_number">{{messages.applicant_mobilework_phone_number_question}}</label>
-			<input type="text" class="form-control" id="applicant_mobilework_phone_number" name="applicant_mobilework_phone_number" value="{{form.applicant.applicant_mobilework_phone_number}}">
-		</div>		
-		<div class="form-group">
-			<!-- Email address -->
-			<label class="form-label" for="applicant_email_address">{{messages.applicant_email_address_question}}</label>
-			<input type="text" class="form-control" id="applicant_email_address" name="applicant_email_address" value="{{form.applicant.applicant_email_address}}">
-		</div>	
-		<div class="form-group">
-			<!-- Relationship to the deceased -->
-			<label class="form-label" for="applicant_relationship_deceased">{{messages.applicant_relationship_deceased}}</label>
-			<input type="text" class="form-control" id="applicant_relationship_deceased" name="applicant_relationship_deceased" 
-					value="{{form.applicant.applicant_relationship_deceased}}">
-		</div>	
 		
+		<!-- Applicant details -->
+		{{formelements.inputtext(messages.applicant_firstname_question,'applicant_firstname',form.applicant.applicant_firstname)}}
+
+		{{formelements.inputtext(messages.applicant_lastname_question,'applicant_lastname',form.applicant.applicant_lastname)}}
+
+		{{addresslookup.address(form.form_action,form.applicant.postcode,form.applicant.address)}}
+
+		{{formelements.inputtext(messages.applicant_home_phone_number_question,
+									'applicant_home_phone_number',form.applicant.applicant_home_phone_number)}}
+
+		{{formelements.inputtext(messages.applicant_mobilework_phone_number_question,
+									'applicant_mobilework_phone_number',form.applicant.applicant_mobilework_phone_number)}}
+
+		{{formelements.inputtext(messages.applicant_email_address_question,
+									'applicant_email_address',form.applicant.applicant_email_address)}}
+
+		{{formelements.inputtext(messages.applicant_relationship_deceased,
+									'applicant_relationship_deceased',form.applicant.applicant_relationship_deceased)}}
 		<div class="form-group">
 			<input type="submit" class="button" value="Continue">
 		</div>
