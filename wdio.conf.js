@@ -44,7 +44,8 @@ exports.config = {
         // 5 instance gets started at a time.
         maxInstances: 5,
         //
-        browserName: 'phantomjs'
+        browserName: 'phantomjs',
+        'phantomjs.binary.path': './node_modules/.bin/phantomjs'
     }],
     //
     // ===================
